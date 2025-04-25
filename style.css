@@ -1,0 +1,76 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+header{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    background-color: whitesmoke;
+
+}
+.head{
+    margin: 10px;
+    font-size: 20px;
+}
+#body{
+    background-color: rgb(255, 238, 223);
+    height: 100%;
+}
+#ContSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+#SearchInput{
+    border: 0px;
+    height: 50%;
+    width: 80%;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 15px;
+}
+#SearchButton{
+    background-color: rgb(233, 205, 133);
+    border: 0px;
+    height: 40%;
+    width: auto;
+    aspect-ratio: 1/0.7;
+    border-radius: 18px;
+    margin: 10px;
+}
+#SearchButton:hover{
+    background-color: rgb(232, 192, 92);
+}
+#SearchButton:active{
+    background-color: rgb(225, 173, 43);
+}
+#CategorieSection{
+    text-align: center;
+    overflow: hidden;
+}
+#Categories{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+/* faire en sorte que ce soit deffilable si besoin */
+.ClassSort{
+    margin: 30px;
+    padding-left: 15px;
+    width: auto;
+    height: 60%;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 550;
+}
+img {
+    height: 80%;
+    border-radius: 30px;
+}
