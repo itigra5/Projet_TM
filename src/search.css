@@ -50,16 +50,10 @@ header{
 #SearchButton:active{
     background-color: rgb(225, 173, 43);
 }
-#CategorieSection{
-    text-align: center;
-    overflow: hidden;
-}
-#Categories{
-    display: grid;
-    grid-template-columns: 1fr;
-}
+
 .ClassSort{
     margin: 30px;
+    margin-bottom: 0px;
     padding-left: 15px;
     width: auto;
     height: 60%;
