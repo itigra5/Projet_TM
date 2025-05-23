@@ -1,23 +1,25 @@
 #Categories{
     display: grid;
-    grid-template-columns: 1fr;
+    margin: 0px;
+    padding: 0px;
+    grid-template-columns: 300px;
+    grid-auto-rows: 200px;
     text-align: center;
     justify-content: center;
-    overflow: hidden;
+    gap: 0.5rem;
 }
 .ClassSort{
-    margin: 30px;
-    margin-bottom: 0px;
-    padding-left: 15px;
-    width: auto;
-    height: 60%;
+    margin: 0px;
+    width: 100%;
+    height: auto;
     aspect-ratio: 1/0.5;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: 30px;
     font-size: 20px;
     font-weight: 550;
+    box-sizing: border-box;
 }
 img {
     height: 80%;

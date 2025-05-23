@@ -13,30 +13,32 @@ function App(){
             image="/public/images/img_patisserie_cat.jpg"
             id="ClassPatsry"
   />
-  <CatSection
+        <CatSection
             titre="Cuisine"
             lien="/test.html"
             image="/public/images/img_cuisine_cat.jpg"
             id="ClassCooking"
   />
-  <CatSection
+        <CatSection
             titre="Couture"
             lien="/test.html"
             image="/public/images/img_couture_cat.jpg"
             id="ClassSewing"
   />
-  <CatSection
+        <CatSection
             titre="Peinture"
             lien="/test.html"
             image="/public/images/img_peinture_cat.jpg"
             id="ClassPainting"
   />
-  <CatSection
+        <CatSection
             titre="Bijoux"
             lien="/test.html"
             image="/public/images/img_bijoux_cat.jpg"
             id="ClassJewelry"
+            
   />
+  
     </div>
 </div>
     </>
