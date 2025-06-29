@@ -7,9 +7,9 @@ function CatSection({titre, lien, image, id}) {
     <>
     <button
  
-    class="ClassSort"
-    id={id}
-    onClick = {() => window.location.href = lien}
+        class="ClassSort"
+        id={id}
+        onClick = {() => window.location.href = lien}
     >
     <span>{titre}</span>
     <img src={image} alt={`image de ${titre}`}/>
