@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Search_1 from "./Pages/Search_1";
 import Home from "./Pages/Home";
+import SearchBox from "./Components/SearchBox";
+import Add from "./Pages/AddPage";
 import './index.css'
 
 
@@ -12,9 +14,13 @@ function App(){
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout/>}>
-                    {/* index means that this route will render when we call the parent */}
-                    <Route index element={<Home/>}/>
-                    <Route path="Search_1" element={<Search_1/>} />
+                {/* Pages avec searchBox ici, et le rest en dehors (idée originale hehehe) */}
+                    <Route element={<SearchBox/>}>
+                        {/* index means that this route will render when we call the parent */}
+                        <Route index element={<Home/>}/>
+                        <Route path="Search_1" element={<Search_1/>} />
+                    </Route>
+                    <Route path="Add" element={<Add/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,0 +1,31 @@
+#ContSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    padding: 30px;
+}
+#SearchInput{
+    border: 0px;
+    height: 40px;
+    width: 80%;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 15px;
+}
+#SearchButton{
+    background-color: rgb(233, 205, 133);
+    border: 0px;
+    height: 40px;
+    width: auto;
+    aspect-ratio: 1/0.7;
+    border-radius: 18px;
+    margin-left: 10px; 
+    cursor: pointer;
+}
+#SearchButton:hover{
+    background-color: rgb(232, 192, 92);
+}
+#SearchButton:active{
+    background-color: rgb(225, 173, 43);
+}
