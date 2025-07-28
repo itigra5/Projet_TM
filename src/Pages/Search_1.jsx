@@ -4,6 +4,8 @@ import CatSection from "../Components/CategoriesSection";
 
 function Search_1(){
     return (
+        <>
+        <h1 id="Title1">Achat par catégories</h1>
         <div id="Categories">
         <CatSection
             titre="Pâtisserie"
@@ -38,6 +40,7 @@ function Search_1(){
             
     />
         </div>
+    </>
     );
 }
 

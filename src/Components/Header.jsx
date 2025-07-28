@@ -1,8 +1,11 @@
-import './header.css'
+import './Layout.css'
 
 function Header() {
     return(
-        <h1>Hello world</h1>
+    <header> 
+        <span class="head" id="LogoSite">Logo / </span>
+        <span class="head" id="PageName">Khotek</span>
+    </header>
     );
 }
 

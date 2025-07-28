@@ -1,3 +1,16 @@
+/* c'est plus simple d'avoir une page css par page + une pour le layout */
+header{
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    background-color: whitesmoke;
+
+}
+.head{
+    margin: 10px;
+    font-size: 20px;
+}
+
 #NavBar {
     background-color: whitesmoke;
     overflow: hidden;
