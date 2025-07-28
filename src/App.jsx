@@ -1,49 +1,23 @@
 import React from "react";
-import CatSection from "./Componant/CategoriesSection";
-import NavBar from "./Componant/NavBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Components/Layout";
+import Search_1 from "./Pages/Search_1";
+import Home from "./Pages/Home";
 import './index.css'
+
 
 function App(){
     return (
     <div id="body">
-        <div id="Categories">
-        <CatSection
-            titre="Pâtisserie"
-            lien="/test.html"
-            image="/public/images/img_patisserie_cat.jpg"
-            id="ClassPatsry"
-    />
-        <CatSection
-            titre="Cuisine"
-            lien="/test.html"
-            image="/public/images/img_cuisine_cat.jpg"
-            id="ClassCooking"
-  />
-        <CatSection
-            titre="Couture"
-            lien="/test.html"
-            image="/public/images/img_couture_cat.jpg"
-            id="ClassSewing"
-  />
-        <CatSection
-            titre="Peinture"
-            lien="/test.html"
-            image="/public/images/img_peinture_cat.jpg"
-            id="ClassPainting"
-      />
-            
-        <CatSection
-            titre="Bijoux"
-            lien="/test.html"
-            image="/public/images/img_bijoux_cat.jpg"
-            id="ClassJewelry"
-            
-    />
-    </div>
-    
-    <div id="NavBar">
-            <NavBar/>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    {/* index means that this route will render when we call the parent */}
+                    <Route index element={<Home/>}/>
+                    <Route path="Search_1" element={<Search_1/>} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     </div>
     );
 }
