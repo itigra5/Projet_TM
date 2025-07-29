@@ -6,7 +6,7 @@ import SearchBox from "../Components/SearchBox";
 function Search_1(){
     return (
         <>
-        <h1 id="Title1">Achat par catégories</h1>
+        <h1 class="Title">Achat par catégories</h1>
         <div id="Categories">
         <CatSection
             titre="Pâtisserie"

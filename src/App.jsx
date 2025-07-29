@@ -5,6 +5,7 @@ import Search_1 from "./Pages/Search_1";
 import Home from "./Pages/Home";
 import SearchBox from "./Components/SearchBox";
 import Add from "./Pages/AddPage";
+import NotFound from "./Pages/NotFound.jsx"
 import './index.css'
 
 
@@ -21,6 +22,8 @@ function App(){
                         <Route path="Search_1" element={<Search_1/>} />
                     </Route>
                     <Route path="Add" element={<Add/>}/>
+                    {/* route pour erreur 404, reste la der */}
+                    <Route path="*" element={<NotFound/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
