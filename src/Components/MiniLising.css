@@ -1,0 +1,57 @@
+.tktfrr{
+    /* For the scroll */
+    display: flex;
+    overflow-x: scroll;
+    flex: 0 0 auto;
+
+}
+
+.Minilising{
+    /* inline block ->inline (goes one after the other) but width and height can be changed */
+    position: relative;
+    width: 120px ;
+    height: 190px;
+    border: 0px;
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 0px;
+    margin: 1em;
+    margin-top: 0px;
+    /* prevents shrinking of the item */
+    flex: 0 0 auto;
+}
+
+.Minilising-img{
+    /* à voir par rapport à comment gerer les publications */
+    position: relative;
+    object-fit: cover;
+    border-radius: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/* le >>before vient de chatGPT */
+.Minilising::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* I'm not using border radius so it's a bit softer on the corners */
+    /* border-radius: 30px; */
+    pointer-events: none;
+    box-shadow: inset 0 0 15px 5px rgb(48, 48, 48);
+    z-index: 10;
+}
+
+.Minilising-title{
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    left: 0px;
+    color: white;
+
+    /* fonts */
+    font-size: 15px;
+    font-weight: 550;
+    /* outline */
+    text-shadow: -1px 0 9px black, 0 1px 9px black, 1px 0 9px black, 0 -1px 9px black;
+}

@@ -17,4 +17,10 @@ body{
     margin: 0px;
     padding: 2rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Hide the scrollbar */
+::-webkit-scrollbar {
+  display: none;
 }
