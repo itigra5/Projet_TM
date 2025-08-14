@@ -2,7 +2,7 @@
     display: grid;
     margin: 0px;
     padding: 0px;
-    grid-template-columns: 300px;
+    grid-template-columns: 90%; 
     grid-auto-rows: 200px;
     text-align: center;
     justify-content: center;
@@ -10,7 +10,6 @@
     margin-bottom: 10%;
 }
 .ClassSort{
-    margin: 0px;
     width: 100%;
     height: auto;
     aspect-ratio: 1/0.5;

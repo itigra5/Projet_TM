@@ -31,12 +31,11 @@ header{
     position: relative;
     font-size: larger;
 }
-.itemNavbar.active::after {
+.itemNavbar.active::before {
 /* trai en dessous de la nav bar */
     content: '';
     position: absolute;
     bottom: -4px;
-    left: 10%;
     width: 100%;
     height: 4px;
     background-color: black;
