@@ -1,0 +1,73 @@
+{
+    "_comment": "j'ai créer le 'template', mais chatGPT a créer les different trucs pour me faire gagner du temp",
+    "annonces": [
+        {
+        "id": 1,
+        "title": "Pancakes",
+        "user": "Tamer",
+        "image": "https://www.tasteofhome.com/wp-content/uploads/2024/09/Buttermilk-Pancakes_EXPS_TOHVP24_33639_MF_08_15_1_RMS.jpg?fit=300,300&webp=1"
+        },
+        {
+        "id": 2,
+        "title": "Nike Air Max 270",
+        "user": "Lina",
+        "image": "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/8c7c68c0-69d3-49d0-97df-1a0e2a24c45e/air-max-270-shoes.png"
+        },
+        {
+        "id": 3,
+        "title": "Canon EOS 90D Camera",
+        "user": "Lina",
+        "image": "https://cdn.mos.cms.futurecdn.net/DKqjKQfKqzu2r7Z36EGo7P-320-80.jpg"
+        },
+        {
+        "id": 4,
+        "title": "Fender Acoustic Guitar",
+        "user": "Nour",
+        "image": "https://d1aeri3ty3izns.cloudfront.net/media/54/543778/600/preview.jpg"
+        },
+        {
+        "id": 5,
+        "title": "Monstera Plant",
+        "user": "Hassan",
+        "image": "https://www.gardendesign.com/pictures/images/900x705Max/site_3/monstera-deliciosa-houseplant-shutterstock-com_12883.jpg"
+        }
+    ],
+    
+    "user": [
+        {
+        "id": 1,
+        "name": "Tamer",
+        "prifil_picture": "https://media.snl.no/media/134040/standard_compressed_iStock-464479016.jpg",
+        "description": "j'aime beaucoup les poules, j'en achète énormément",
+        "city": "Lausanne"
+        },
+        {
+        "id": 2,
+        "name": "Lina",
+        "prifil_picture": "https://randomuser.me/api/portraits/women/65.jpg",
+        "description": "Passionnée de cuisine et toujours à la recherche de nouvelles recettes.",
+        "city": "Genève"
+        },
+        {
+        "id": 3,
+        "name": "Hassan",
+        "prifil_picture": "https://randomuser.me/api/portraits/men/23.jpg",
+        "description": "Je suis étudiant et j'adore découvrir des saveurs locales.",
+        "city": "Zurich"
+        },
+        {
+        "id": 4,
+        "name": "Sofia",
+        "prifil_picture": "https://randomuser.me/api/portraits/women/44.jpg",
+        "description": "Grande fan de pâtisserie, je fais des gâteaux pour mes amis.",
+        "city": "Berne"
+        },
+        {
+        "id": 5,
+        "name": "David",
+        "prifil_picture": "https://randomuser.me/api/portraits/men/19.jpg",
+        "description": "Je collectionne les ustensiles de cuisine rares.",
+        "city": "Lausanne"
+        }
+    ]
+}
