@@ -1,9 +1,12 @@
 /* c'est plus simple d'avoir une page css par page + une pour le layout */
-header{
-    display: flex;
+#header{
+    display: flex; 
+    width: 100%;
     align-items: center;
-    height: 3rem;
+    height: 7%;
     background-color: whitesmoke;
+    /* position: fixed; */
+    z-index: 10;
 
 }
 .head{
@@ -21,8 +24,8 @@ header{
     align-items: center;
     position: fixed;
     bottom: 0;
-    border-top: 5px;
     border-color: black;
+    z-index: 10;
 }
 
 .itemNavbar  {

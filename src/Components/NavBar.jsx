@@ -28,9 +28,9 @@ function NavBar(){
             </NavLink>
 
             <NavLink 
-                to="/Profil" 
+                to="/Profile" 
                 className="itemNavbar" 
-                title="Profil">
+                title="Profile">
                 <i class="fa-solid fa-user"></i>
             </NavLink>
 

@@ -12,7 +12,7 @@ function CatSection({titre, lien, image, id}) {
         onClick = {() => window.location.href = lien}
     >
     <span>{titre}</span>
-    <img src={image} alt={`image de ${titre}`}/>
+    <img class ="cat_img"src={image} alt={`image de ${titre}`}/>
 
     </button>
     </>

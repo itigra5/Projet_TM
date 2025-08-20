@@ -21,7 +21,7 @@
     font-weight: 550;
     box-sizing: border-box;
 }
-img {
+.cat_img {
     height: 80%;
     border-radius: 30px;
     width: auto;

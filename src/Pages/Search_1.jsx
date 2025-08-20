@@ -1,6 +1,5 @@
 import React from "react";
 import CatSection from "../Components/CategoriesSection";
-import SearchBox from "../Components/SearchBox";
 
 
 function Search_1(){

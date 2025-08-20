@@ -7,7 +7,6 @@
 }
 
 .Minilising{
-    /* inline block ->inline (goes one after the other) but width and height can be changed */
     position: relative;
     width: 120px ;
     height: 190px;
@@ -39,7 +38,7 @@
     /* border-radius: 30px; */
     pointer-events: none;
     box-shadow: inset 0 0 15px 5px rgb(48, 48, 48);
-    z-index: 10;
+    z-index: 2;
 }
 
 .Minilising-title{
