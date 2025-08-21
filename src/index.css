@@ -1,11 +1,11 @@
 body{
     background-color: rgb(255, 238, 223);
-    height: 100vh;
+    height: 100%;
     margin: 0px;
     padding: 0px;
     /* fait un truc bizard, à regler */
-    /* padding-top: 7%; */
-    padding-bottom: 10%;
+    padding-top: 7vh;
+    padding-bottom: 10vh;
     border: 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -21,6 +21,7 @@ body{
     padding: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    font-family: "Averia Serif Libre", serif;
 }
 .BigTitle{
     display: flex;

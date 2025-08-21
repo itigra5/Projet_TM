@@ -21,7 +21,7 @@ function Home() {
             )
         } 
         </div>
-        <h1 class="Title">Recomendé pour vous</h1>
+        <h1 class="Title">Recomandé pour vous</h1>
         <div class="tktfrr">
                 {myData.annonces.map(a => (
                     <MiniLising

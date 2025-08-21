@@ -1,11 +1,13 @@
 /* c'est plus simple d'avoir une page css par page + une pour le layout */
 #header{
-    display: flex; 
+    display: flex;
     width: 100%;
     align-items: center;
     height: 7%;
     background-color: whitesmoke;
-    /* position: fixed; */
+    position: fixed;
+    /* so it stays up even after the padding */
+    top: 0;
     z-index: 10;
     border-bottom: 1px solid gray;
 
@@ -17,7 +19,6 @@
 
 #NavBar {
     background-color: whitesmoke;
-    overflow: hidden;
     display: flex;
     width: 100%;
     height: 10%;
