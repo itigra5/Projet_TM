@@ -12,6 +12,7 @@
 .ClassSort{
     width: 100%;
     height: auto;
+    background-color:rgb(237, 202, 160);
     aspect-ratio: 1/0.5;
     display: flex;
     align-items: center;
@@ -20,6 +21,8 @@
     font-size: 20px;
     font-weight: 550;
     box-sizing: border-box;
+    text-decoration: none;
+    color: black;
 }
 .cat_img {
     height: 80%;

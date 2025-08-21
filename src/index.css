@@ -22,6 +22,11 @@ body{
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+.BigTitle{
+    display: flex;
+    justify-content: center;
+    text-decoration: underline rgb(248, 173, 173);
+}
 
 /* Hide the scrollbar */
 ::-webkit-scrollbar {

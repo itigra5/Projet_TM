@@ -8,6 +8,7 @@ import Add from "./Pages/AddPage";
 import Profile from "./Pages/Profile.jsx";
 import Cart  from "./Pages/Cart.jsx";
 import NotFound from "./Pages/NotFound.jsx"
+import PagePat from "./Pages/PagePat.jsx";
 import './index.css'
 
 
@@ -23,9 +24,26 @@ function App(){
                         <Route index element={<Home/>}/>
                         <Route path="Search_1" element={<Search_1/>} />
                     </Route>
+                    
                     <Route path="Add" element={<Add/>}/>
                     <Route path="Profile" element={<Profile/>}/>
-                    <Route path="Cart" element={<Cart/>}/>                    
+                    <Route path="Cart" element={<Cart/>}/>  
+                    {/* les routes pour les 1ere cat*/}
+                    <Route path="Page_pat" element={<PagePat/>}></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route> 
+                    {/* Toute les routes des 2nd cat */}
+                    <Route path="/cat-pat" element="CatPat"></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route>
+                    <Route path="" element=""></Route> 
+                    
                     {/* route pour erreur 404, reste la der */}
                     <Route path="*" element={<NotFound/>}/>
                 </Route>

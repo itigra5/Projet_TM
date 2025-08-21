@@ -4,7 +4,7 @@ import myData from '../Data.json';
 
 
 function Profile(){
-    const a =1;
+    const a =4  ;
     return(
         <>
             <InfoProfil name={myData.user[a].name} city={myData.user[a].city} pp={myData.user[a].prifil_picture}description={myData.user[a].description} />      

@@ -9,7 +9,7 @@ function Search_1(){
         <div id="Categories">
         <CatSection
             titre="Pâtisserie"
-            lien="/test.html"
+            lien="/Page_pat"
             image="/public/images/img_patisserie_cat.jpg"
             id="ClassPatsry"
     />

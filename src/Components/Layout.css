@@ -7,6 +7,7 @@
     background-color: whitesmoke;
     /* position: fixed; */
     z-index: 10;
+    border-bottom: 1px solid gray;
 
 }
 .head{
