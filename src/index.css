@@ -22,12 +22,18 @@ body{
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-family: "Averia Serif Libre", serif;
-    w
 }
+
 .BigTitle{
     display: flex;
     justify-content: center;
     text-decoration: underline rgb(248, 173, 173);
+}
+
+/* for all the links */
+a{
+    text-decoration: none;
+    color: black;
 }
 
 /* Hide the scrollbar */

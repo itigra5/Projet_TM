@@ -1,0 +1,33 @@
+.CatMenu{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+
+.MiniCat{
+    /* display: flexbox; */
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+
+.ImageMiniCat{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 20%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.TitleMiniCat{
+    display: flex;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    white-space: pre-line;
+}

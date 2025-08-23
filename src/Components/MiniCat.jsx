@@ -1,15 +1,21 @@
 import React from "react";
-import './MiniCat.css' 
+import { Link } from "react-router-dom";
+import './MiniCat.css';
+import './Layout.css'
 
 
 
 
-function MiniCat(name, image){
+function MiniCat({name}){
     return (
         <>
-        <img src={image} alt="random photo" />
-        <p>{name}</p>
-    </>
+        <Link class="MiniCat"
+                to="/Scroll">
+            <div class="ImageMiniCat">
+                <p class="TitleMiniCat">{name}</p>
+            </div>
+        </Link> 
+        </>
     );
 }
 
