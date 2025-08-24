@@ -5,7 +5,7 @@ function MiniLising({title, image}){
 
     return(
         <>
-            <button className="Minilising">
+            <button class="Minilising">
                 <img class="Minilising-img" src={image} alt={title}/>
                 <span class="Minilising-title"> {title}</span>
             </button>
