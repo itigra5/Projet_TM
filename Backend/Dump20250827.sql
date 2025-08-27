@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `tm` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tm`;
 -- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tm
@@ -16,29 +18,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `catégorie`
+-- Table structure for table `categorie`
 --
 
-DROP TABLE IF EXISTS `catégorie`;
+DROP TABLE IF EXISTS `categorie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `catégorie` (
-  `idCatégorie` int unsigned NOT NULL AUTO_INCREMENT,
-  `NomCatégorie` varchar(45) NOT NULL,
-  `Image` varchar(45) NOT NULL,
-  PRIMARY KEY (`idCatégorie`),
-  UNIQUE KEY `idCatégorie_UNIQUE` (`idCatégorie`)
+CREATE TABLE `categorie` (
+  `idCategorie` int unsigned NOT NULL AUTO_INCREMENT,
+  `NomCategorie` varchar(45) NOT NULL,
+  `ImagePhone` varchar(45) NOT NULL,
+  `ImagePC` varchar(45) NOT NULL,
+  PRIMARY KEY (`idCategorie`),
+  UNIQUE KEY `idCategorie_UNIQUE` (`idCategorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `catégorie`
+-- Dumping data for table `categorie`
 --
 
-LOCK TABLES `catégorie` WRITE;
-/*!40000 ALTER TABLE `catégorie` DISABLE KEYS */;
-INSERT INTO `catégorie` VALUES (2,'Pâtisserie','https://tinyurl.com/yzwrnntn'),(3,'Cuisine','https://tinyurl.com/categorie-cuisine'),(4,'Bijoux','https://tinyurl.com/categorie-bijoux'),(5,'Art & Collection','https://tinyurl.com/categorie-art'),(6,'Couture','https://tinyurl.com/categorie-couture');
-/*!40000 ALTER TABLE `catégorie` ENABLE KEYS */;
+LOCK TABLES `categorie` WRITE;
+/*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
+INSERT INTO `categorie` VALUES (2,'Pâtisserie','https://tinyurl.com/4xsuwt64','https://tinyurl.com/yzwrnntn'),(3,'Cuisine','https://tinyurl.com/46frs7fb','https://tinyurl.com/categorie-cuisine'),(4,'Bijoux','https://tinyurl.com/yf82dbdy','https://tinyurl.com/categorie-bijoux'),(5,'Art & Collection','https://tinyurl.com/p3yshja6','https://tinyurl.com/categorie-art'),(6,'Couture','https://tinyurl.com/4eccnkvn','https://tinyurl.com/categorie-couture');
+/*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -51,8 +54,7 @@ DROP TABLE IF EXISTS `favoris`;
 CREATE TABLE `favoris` (
   `idUser_favoris` int unsigned NOT NULL,
   `idProduit_favoris` int unsigned NOT NULL,
-  UNIQUE KEY `idUser_favoris_UNIQUE` (`idUser_favoris`),
-  UNIQUE KEY `idProduit_favoris_UNIQUE` (`idProduit_favoris`),
+  UNIQUE KEY `unique_favoris` (`idUser_favoris`,`idProduit_favoris`),
   KEY `idProduit_idx` (`idProduit_favoris`) /*!80000 INVISIBLE */,
   CONSTRAINT `idProduit_favoris` FOREIGN KEY (`idProduit_favoris`) REFERENCES `produit` (`idProduit`),
   CONSTRAINT `idUser_favoris` FOREIGN KEY (`idUser_favoris`) REFERENCES `user` (`idUser`)
@@ -207,30 +209,30 @@ LOCK TABLES `produit` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `sous-catégorie`
+-- Table structure for table `sous-categorie`
 --
 
-DROP TABLE IF EXISTS `sous-catégorie`;
+DROP TABLE IF EXISTS `sous-categorie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sous-catégorie` (
-  `idSous-Catégorie` int unsigned NOT NULL AUTO_INCREMENT,
-  `NomSous-Catégorie` varchar(45) NOT NULL,
-  `Image` varchar(45) DEFAULT NULL,
-  `idCatégorie_Sous` int unsigned NOT NULL,
-  PRIMARY KEY (`idSous-Catégorie`),
-  KEY `idCatégorie_Sous_idx` (`idCatégorie_Sous`),
-  CONSTRAINT `idCatégorie_Sous` FOREIGN KEY (`idCatégorie_Sous`) REFERENCES `catégorie` (`idCatégorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `sous-categorie` (
+  `idSous-Categorie` int unsigned NOT NULL AUTO_INCREMENT,
+  `NomSous-Categorie` varchar(45) NOT NULL,
+  `idCategorie_Sous` int unsigned NOT NULL,
+  PRIMARY KEY (`idSous-Categorie`),
+  KEY `idCatégorie_Sous_idx` (`idCategorie_Sous`),
+  CONSTRAINT `idCategorie_Sous` FOREIGN KEY (`idCategorie_Sous`) REFERENCES `categorie` (`idCategorie`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sous-catégorie`
+-- Dumping data for table `sous-categorie`
 --
 
-LOCK TABLES `sous-catégorie` WRITE;
-/*!40000 ALTER TABLE `sous-catégorie` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sous-catégorie` ENABLE KEYS */;
+LOCK TABLES `sous-categorie` WRITE;
+/*!40000 ALTER TABLE `sous-categorie` DISABLE KEYS */;
+INSERT INTO `sous-categorie` VALUES (1,'Pâtisserie française',2),(2,'Pâtisserie américaine',2),(3,'Pâtisserie orientale',2),(4,'Pâtisserie pour anniversaire',2),(5,'Pâtisserie pour mariage',2),(6,'Pâtisserie saisonière',2),(7,'Pâtisserie végane',2),(8,'Pâtisserie gluten free',2),(9,'Cuisine française',3),(10,'Cuisine américaine',3),(11,'Cuisine orientale',3),(12,'Cuisine asiatique',3),(13,'Cuisine végétarienne',3),(14,'Cuisine végane',3),(15,'Cuisine gluten free',3),(16,'Collier',4),(17,'Bracelet',4),(18,'Bague',4),(19,'Boucles d\'oreille',4),(20,'Vêtements',6),(21,'Accessoires',6),(22,'Décoration',6),(23,'Couture pour enfants et bébés',6),(24,'Peinture',5),(25,'Dessin',5),(26,'Sculpture',5),(27,'Photographie artistique',5),(28,'Restauration d\'oeuvres et d\'objets anciens',5);
+/*!40000 ALTER TABLE `sous-categorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -281,13 +283,13 @@ CREATE TABLE `user` (
   `Mot de passe` varchar(100) NOT NULL,
   `Photo de profil` varchar(45) DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,
-  `Rôle` varchar(45) DEFAULT NULL,
-  `Nombre d'étoile` int DEFAULT NULL,
+  `Role` varchar(45) DEFAULT NULL,
+  `Nombre d'etoile` int DEFAULT NULL,
   `Langue` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `iduser_UNIQUE` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,7 +298,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Smith','Anna','anna.smith@gmail.com','Ch. des oiseaux 23 1000 Lausanne','cannelle1421!','https://tinyurl.com/2u4fh479','Passionée de pâtisserie, spécialisée dans les macarons','achteur/vendeur',4,'Français');
+INSERT INTO `user` VALUES (1,'Smith','Anna','anna.smith@gmail.com','Rue étraz 8 1000 Lausanne','cannelle1421!','https://tinyurl.com/2u4fh479','Passionée de pâtisserie, spécialisée dans les macarons','achteur/vendeur',4,'Français'),(2,'Petit','Charles','charles@petit.info','Grand-Rue 48 1180 Rolle','Lila1214!!!','https://tinyurl.com/58jhr53h','mon passe temps est de faire la collection d\'objets anciens et de les resstaurer','achteur/vendeur',3,'Français'),(3,'Gonzales','Clara','clara12.gonzales@gmail.com','Ch. des Joncs 21 1185 Mont-sur-Rolle','Monpetitamour4ever!','https://tinyurl.com/242kz6j9','J\'adore découvrir de nouvelles choses, donc je suis sur cette platforme pour me faire surprendre','achteur',4,'Français');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -309,4 +311,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-22 16:48:19
+-- Dump completed on 2025-08-27 22:31:06
