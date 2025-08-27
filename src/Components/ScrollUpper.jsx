@@ -1,13 +1,24 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import './scrolling.css'
 
-function ScrollUpper(){
+
+// https://dev.to/rakumairu/simple-react-carousel-24m0
+
+function ScrollUpper({children}){
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [length, setLength] = useState(children.length)
+
+    // Set the length to match current children from props
+    useEffect(() => {
+        setLength(children.length)
+    }, [children])
     return(
         <>
         <div class="ScrollUpper">
             <p class="ScrollTitle">Set de Cupcakes</p>
-            <div class="scrollImgages">
-                <img class="scrollImg" src="https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp" alt="je sais pas" />
+            <div class="scrollImgages" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                {children}
             </div>
             <button class="PlusCart">
                 <i class="fa-solid fa-cart-shopping"></i>

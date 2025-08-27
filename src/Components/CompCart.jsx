@@ -13,6 +13,9 @@ function CompCart({link, img, name, pp, user, quantity, price}){
                     <MiniProfil pp={pp} name={user} city=""/>
                     <span class="CompCartQuantity">Quantité : {quantity} pièces</span>
                     <span class="CompCartPrice">Prix pour un : {price} .-</span>
+                    <button class="trash">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
             </div>
         </Link>
