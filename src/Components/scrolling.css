@@ -62,14 +62,6 @@
 .ScrollLower{
     height: 20vh;
     position: relative;
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-    "profil"
-    "desc"
-    "ingre"
-    ; */
 }
 .ScrollLower * {
     max-width: 100%;

@@ -1,0 +1,46 @@
+.CompCart{
+    display: flex;
+    position: relative;
+    height: 20vh;
+    width: 100vw;
+    border-radius: 20%;
+    margin-bottom: 3vh;
+}
+
+.CompCartImg{
+    height: auto;
+    margin: 5vw;
+    border-radius: 30px;
+    border: 1px solid rgb(41, 35, 35);
+}
+
+.CompCartInfos{
+    display: grid;
+    position: absolute;
+    top: 5vw;
+    left: calc(20vh +  3vw);
+    grid-row: 1fr 1fr 1fr 1fr;
+    row-gap: 1vh;
+}
+
+.ComptCartName{
+    font-size: larger;
+    font-weight: 500;
+     font-family: "Edu NSW ACT Cursive", cursive;
+}
+
+.CompCartInfos .MiniProfil {
+    height: 4vh;
+    gap: 20px;
+    margin: -10px;
+}
+
+.CompCartInfos .MiniProfil .MiniProfilName {
+    font-size: 4vw;
+    margin-left: -40px;
+    font-weight: 100;
+}
+
+.CompCart:hover{
+        background-color: rgb(212, 196, 183);
+}
