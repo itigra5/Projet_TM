@@ -3,7 +3,7 @@
 .ScrollUpper{
     height: 63vh;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .ScrollUpper * {
@@ -21,7 +21,7 @@
 }
 
 .scrollImgages{
-    /* display: flex; */
+    display: flex;
     height: 70vh;
     width: 100vw;
     border-bottom: 2px solid black;
