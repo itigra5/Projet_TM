@@ -1,15 +1,14 @@
 import React from "react";
-import ScrollLower from "../Components/ScrollLower";
-import ScrollUpper from "../Components/ScrollUpper";
+import AnnonceSwip from "../Components/AnnonceSwip";
 
 
 function Scrolling(){
     return(
-        <>
-        <ScrollUpper/> 
-
-        <ScrollLower desc="Exelents mufins tres tres bon miam"/>
-        </>
+        <div class="scrollPage">
+            <AnnonceSwip/>
+            <AnnonceSwip/>
+            <AnnonceSwip/>
+        </div>
     );
 }
 

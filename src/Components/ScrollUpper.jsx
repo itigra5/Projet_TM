@@ -1,14 +1,14 @@
-import React from "react";
+import React, { children } from "react";
 import './scrolling.css';
 
-function ScrollUpper() {
+function ScrollUpper({children}) {
     return (
         <div 
             className="ScrollUpper"
         >
             <p className="ScrollTitle">Set de Cupcakes</p>
             <div className="scrollImgages">
-                <img class="scrollImg" src="https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp" alt="je sais pas" />
+                {children}
             </div>
             <button className="PlusCart">
                 <i className="fa-solid fa-cart-shopping"></i>
