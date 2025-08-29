@@ -1,0 +1,130 @@
+:root{
+  --bg: rgb(255, 238, 223);
+  --card: rgb(255, 238, 223);
+  --primary: rgb(255, 188, 129);
+  --muted: #777;
+  --radius: 12px;
+  --gap: 14px;
+}
+
+.add-page {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.add-card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(20,20,40,0.06);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.field {
+  margin-bottom: var(--gap);
+  display: block;
+}
+
+.field.small {
+  max-width: 240px;
+}
+
+.label-text {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.input,
+.textarea,
+select.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e7eb;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+/* Photos grid */
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.photo-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.photo-add {
+  width: 70vw;
+  height: 50vh;
+  border: 1px dashed #bbb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 28px;
+  background-color: rgb(255, 238, 223);
+}
+
+/* Profil box */
+.profile-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+background-color: rgb(255, 238, 223);
+  padding: 10px;
+  border-radius: 8px;
+}
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-name {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Boutons */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #efefef;
+  font-size: 14px;
+}
+.btn.primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 6px 14px rgb(255, 208, 168);
+}
+.btn.outline {
+  background: transparent;
+  border: 1px solid #d6d9e6;
+}
