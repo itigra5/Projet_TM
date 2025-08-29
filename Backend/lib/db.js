@@ -1,16 +1,18 @@
-const mysql = require('mysql2')
+const mysql = require('mysql2');
 
-// create a variable of connection so we use only one. better i guess
-let connection;
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
 
-export const connectToDatabase = async () => {
-    if(!connection) {
-        connection = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME
-        })
-    }
-    return connection 
-}
+db.connect((err) => {
+  if (err) {
+    console.error("Erreur connexion MySQL :", err);
+    return;
+  }
+  console.log("Connecté à la base MySQL !");
+});
+
+module.exports = db;

@@ -1,45 +1,36 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import CatSection from "../Components/CategoriesSection";
 
 
 function Search_1(){
+
+    const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const res = await fetch("http://localhost:3000/categories");
+        const data = await res.json();
+        setCategories(data); // on stocke dans le state
+      } catch (err) {
+        console.error('Erreur :', err);
+      }
+    }
+    loadCategories();
+  });
     return (
         <>
         <h1 class="Title">Achat par catégories</h1>
         <div id="Categories">
-        <CatSection
-            titre="Pâtisserie"
+        {categories.map(cat => (
+            <CatSection
+            titre={cat.NomCategorie}
             lien="/Page_pat"
-            image="/public/images/img_patisserie_cat.jpg"
-            id="ClassPatsry"
-    />
-        <CatSection
-            titre="Cuisine"
-            lien="/test.html"
-            image="/public/images/img_cuisine_cat.jpg"
-            id="ClassCooking"
-  />
-        <CatSection
-            titre="Couture"
-            lien="/test.html"
-            image="/public/images/img_couture_cat.jpg"
-            id="ClassSewing"
-  />
-        <CatSection
-            titre="Peinture"
-            lien="/test.html"
-            image="/public/images/img_peinture_cat.jpg"
-            id="ClassPainting"
-      />
-            
-        <CatSection
-            titre="Bijoux"
-            lien="/test.html"
-            image="/public/images/img_bijoux_cat.jpg"
-            id="ClassJewelry"
-            
-    />
-        </div>
+            image={cat.ImagePhone}
+            id={cat.idCategorie}
+            />
+        ))}
+    </div>
     </>
     );
 }
