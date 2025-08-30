@@ -28,6 +28,7 @@ body{
     display: flex;
     justify-content: center;
     text-decoration: underline rgb(248, 173, 173);
+    font-family: "Averia Serif Libre", serif;
 }
 
 /* for all the links */
