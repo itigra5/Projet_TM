@@ -8,7 +8,7 @@ import Add from "./Pages/AddPage";
 import Profile from "./Pages/Profile.jsx";
 import Cart  from "./Pages/Cart.jsx";
 import NotFound from "./Pages/NotFound.jsx"
-import PagePat from "./Pages/Patisseuries.jsx";
+import Search_2 from "./Pages/Search_2.jsx";
 import Scrolling from "./Pages/ScrollingPage.jsx";
 import './index.css'
 
@@ -30,7 +30,7 @@ function App(){
                     <Route path="Profile" element={<Profile/>}/>
                     <Route path="Cart" element={<Cart/>}/>  
                     {/* les routes pour les 1ere cat*/}
-                    <Route path="Page_pat" element={<PagePat/>}></Route>
+                    <Route path="Search_2" element={<Search_2/>}></Route>
                     {/* Toute les routes des 2nd cat */}
                     <Route path="/Scroll" element={<Scrolling/>}></Route>
                     

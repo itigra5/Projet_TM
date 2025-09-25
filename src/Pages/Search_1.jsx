@@ -25,7 +25,7 @@ function Search_1(){
         {categories.map(cat => (
             <CatSection
             titre={cat.NomCategorie}
-            lien="/Page_pat"
+            lien="/Search_2"
             image={cat.ImagePhone}
             id={cat.idCategorie}
             />
