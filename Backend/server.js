@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const catRoutes = require('./routes/cathegoriesRoutes');
+const sequelize = require('./lib/db');
 
 const app= express();
 app.use(cors())
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Hello Word');
+app.get('/', (res, req) => {
+    req.send("merci, ça marche !");
+});
+
+app.get('/hey', (req, res) => {
+    res.send('Hello khtek');
 });
 
 // Routes
