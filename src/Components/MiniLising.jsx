@@ -1,5 +1,5 @@
 import React from "react";
-import './Minilising.css';
+import './MiniLising.css';
 
 function MiniLising({title, image}){
 
