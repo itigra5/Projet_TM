@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import MiniLising from "../Components/MiniLising";
-import '../Components/Minilising.css';
+import '../Components/MiniLising.css';
 import myData from '../Data.json';
 
 function Home() {

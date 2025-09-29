@@ -13,12 +13,15 @@ function Search_2(){
 
     return (
         <>
-        <h1 class="BigTitle">Pâtisserie</h1>
-        <h1 class="Title">Filtrer par</h1>
-        <div class="CatMenu">
-            <MiniCat name="Patisseries francaises"/>
-
-        </div>
+        {categories.map(catt => (
+            <>
+            <h1 class="BigTitle">{catt.name}</h1>
+            <h1 class="Title">Filtrer par</h1>
+            <div class="CatMenu">
+                <MiniCat name={catt.name} />
+            </div>
+            </>
+        ))}
     </>
     );
 }
