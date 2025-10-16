@@ -1,55 +1,112 @@
-#info_profil{
-    width: 100%;
-    height: 35vh;
-    display: grid;
-    grid-template-columns: 40% 60% ; 
-    grid-template-rows: 50% 50%;
-    grid-template-areas: 
-    "pp rest"
-    "desc desc"
-    ;
+/* conteneur centré (inchangé) */
+.profile_wrapper{
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px 0 28px;
+  box-sizing: border-box;
 }
 
+/* HEADER en grille : avatar | identité | actions */
+.profile_header{
+  display: grid;
+  grid-template-columns: 88px 1fr 160px; /* ajuste la 3e colonne si besoin */
+  column-gap: 18px;
+  align-items: start;        /* n'étire pas la colonne du milieu */
+  padding: 18px 0;
+  margin-top: 8px;
+  margin-left: 0px;
+}
+
+/* avatar */
 .profil_picture{
-    border-radius: 50%;
-    grid-area: pp;
-    display: block;
-    margin: 10%;
-    border: 1px solid black;
+  width: 88px; 
+  height: 88px; 
+  border-radius: 50%;
+  border: 1px solid #000; 
+  object-fit: cover;
+  margin-left: 0;
 }
 
-.info_profile_infos{
-    grid-area: rest;
-    display: block;
-    margin-left: 30px;
+/* colonne milieu */
+.identity{ 
+    display:flex; 
+    flex-direction:column;
+    gap:6px; 
+    min-width:0;
+    align-self: center; 
+    transform: translateY(2px);
 }
 
-.description{
-    grid-area: desc;
-    display: flex;
-    margin-inline: 20px;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-
+.pseudo{ 
+    margin:0;
+    font-size:1.5rem; 
+    font-weight:700; 
 }
 
-.pseudo{
-    font-size: 30px;
-    font-weight: 400;
-    margin-bottom: 0px;
-    padding-left: 5px;
-
+.city{ 
+    margin:0; 
+    font-size:1rem; 
+    font-weight:300; 
 }
-.city{
-    margin: 0px;
-    font-size: 18px;
-    font-weight: lighter;
-    padding-left: 5px;
 
+.stars{ margin:0; }
+
+/* colonne droite : plus bas et centré */
+.follow_inline{
+  display:flex; 
+  flex-direction:column;
+  gap:8px;
+  align-items:center;        /* centre le texte + bouton */
+  justify-self:center;       /* centre dans la 3e colonne */
+  align-self:center;
+  margin-left: -2px;         /* centre verticalement par rapport à l’avatar/nom */
+  transform: translateY(-3px);/* descends un peu le bloc (ajuste 4–10px) */
 }
-.stars{
-    margin: 0px;
-    padding-left: 5px;
 
+.followers_count{ 
+    font-size:1.2rem; 
+    font-weight:500;
+     color:#222; 
+    }
+
+.follow_btn{
+  background:#fff; 
+  border:1.5px solid #333; 
+  border-radius:999px;
+  padding:6px 16px; 
+  font-size:.95rem; 
+  font-weight:600; 
+  cursor:pointer; 
+  transition:.2s;
+}
+
+.follow_btn:hover{ 
+    background:#333; 
+    color:#fff; 
+}
+
+.follow_btn.following{ 
+    background:#ccc; 
+    color:#222; 
+    border-color:#ccc; 
+}
+
+/* description */
+.description{ 
+    margin-top:10px; 
+    font-size:1.1rem; 
+    line-height:1.45; 
+}
+
+
+.creations_title{
+  max-width: 680px;
+  margin: 22px auto 0;
+  padding: 0 24px;
+  font-family: "Averia Serif Libre", serif; /* même police */
+  font-weight: 700;
+  font-size: 1.8rem;        /* ajuste si besoin */
+  line-height: 1.2;
+  color: #000;
+  box-sizing: border-box;
 }

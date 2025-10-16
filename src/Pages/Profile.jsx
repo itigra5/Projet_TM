@@ -1,17 +1,28 @@
 import React from "react";
 import InfoProfil from "../Components/InfoProfil";
-import myData from '../Data.json';
+import myData from "../Data.json";
+import "../Components/InfoProfil.css";
 
+function Profile() {
+  const a = 4; // index utilisateur à afficher
+  const u = myData.user[a];
 
-function Profile(){
-    const a =4  ;
-    return(
-        <>
-            <InfoProfil name={myData.user[a].name} city={myData.user[a].city} pp={myData.user[a].prifil_picture}description={myData.user[a].description} />      
-            <h1 class="Title">Mes creations</h1>
-            {/* mmettre le lising, ez  */}
-        </>
-    )
+  return (
+    <>
+      <InfoProfil
+        name={u.name}
+        city={u.city}
+        pp={u.profil_picture}      // <— vérifie l’orthographe de la clé
+        description={u.description}
+        followers={u.followers}
+        stars={u.stars}
+      />
+
+      <h2 className="creations_title">Mes créations</h2>
+      
+      
+    </>
+  );
 }
 
 export default Profile;

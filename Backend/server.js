@@ -19,6 +19,6 @@ app.get('/hey', (req, res) => {
 app.use("/categories", catRoutes);
 
 
-app.listen(process.env.PORT , () => {
+app.listen(3306, () => {
     console.log("Server is running !")
 });

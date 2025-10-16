@@ -2,11 +2,11 @@ const { Sequelize } = require('sequelize');
 
 // Create a Sequelize instance 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,       
-  process.env.DB_USER,       
-  process.env.DB_PASSWORD,   
+  "tm",       
+  "root",       
+  "Spiceyourlife18!",   
   {
-    host: process.env.DB_HOST, 
+    host: "localhost", 
     dialect: 'mysql',          
   }
 );
