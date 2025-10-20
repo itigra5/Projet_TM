@@ -17,7 +17,7 @@ function Search_1(){
       }
     }
     loadCategories();
-  });
+  }, []);
     return (
         <>
         <h1 class="Title">Achat par catégories</h1>
@@ -25,7 +25,7 @@ function Search_1(){
         {categories.map(cat => (
             <CatSection
             titre={cat.NomCategorie}
-            lien="/Search_2"
+            lien={`/Search/${cat.idCategorie}/${cat.NomCategorie}`}
             image={cat.ImagePhone}
             id={cat.idCategorie}
             />

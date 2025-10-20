@@ -30,7 +30,7 @@ function App(){
                     <Route path="Profile" element={<Profile/>}/>
                     <Route path="Cart" element={<Cart/>}/>  
                     {/* les routes pour les 1ere cat*/}
-                    <Route path="Search_2" element={<Search_2/>}></Route>
+                    <Route path="Search/:id/:NomCategorie" element={<Search_2/>}></Route>
                     {/* Toute les routes des 2nd cat */}
                     <Route path="/Scroll" element={<Scrolling/>}></Route>
                     

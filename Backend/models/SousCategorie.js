@@ -1,17 +1,17 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('sous-categorie', {
-    'idSous-Categorie': {
+  return sequelize.define('sous_categorie', {
+    'idSousCategorie': {
       autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       primaryKey: true
     },
-    'NomSous-Categorie': {
+    'NomSousCategorie': {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    idCategorie_Sous: {
+    'idCategorie_Sous': {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       references: {
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'sous-categorie',
+    tableName: 'sous_categorie',
     timestamps: false,
     indexes: [
       {
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "idSous-Categorie" },
+          { name: "idSousCategorie" },
         ]
       },
       {
