@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(253, 238, 226);
+    background-color: rgb(252, 241, 232);
     height: 100%;
     margin: 0px;
     padding: 0px;
@@ -18,11 +18,15 @@ body{
 
 .Title{
     margin: 0px;
-    padding: 2rem;
+    padding: 0rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-family: "Averia Serif Libre", serif;
+    font-size: 27px;
+    margin-left: 6%;
+    font-weight: 300;
 }
+
 
 .BigTitle{
     display: flex;
@@ -34,7 +38,7 @@ body{
 /* for all the links */
 a{
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 /* Hide the scrollbar */

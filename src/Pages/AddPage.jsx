@@ -58,7 +58,7 @@ function Add() {
             rows="4"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
-            placeholder="Décris ton objet / ton annonce..."
+            placeholder="Décris ton produit / ton annonce..."
           />
         </label>
 
@@ -83,10 +83,10 @@ function Add() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Choisir une catégorie</option>
-            <option value="vetement">Patiseurie</option>
-            <option value="electronique">cuisine</option>
+            <option value="vetement">Pâtisserie</option>
+            <option value="electronique">Cuisine</option>
             <option value="maison">Bijoux</option>
-            <option value="artEtcollection">art et collection</option>
+            <option value="artEtcollection">Art & Collection</option>
             <option value="couture">Couture</option>
 
           </select>

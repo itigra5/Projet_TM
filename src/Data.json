@@ -40,7 +40,7 @@
         "profil_picture": "https://media.snl.no/media/134040/standard_compressed_iStock-464479016.jpg",
         "description": "j'aime beaucoup les poules, j'en achète énormément",
         "city": "Lausanne",
-        "followers": 245,
+        "followers": 318,
         "stars": "⭐⭐⭐"
         },
         {
@@ -49,7 +49,7 @@
         "profil_picture": "https://randomuser.me/api/portraits/women/65.jpg",
         "description": "Passionnée de cuisine et toujours à la recherche de nouvelles recettes.",
         "city": "Genève",
-        "followers": 245,
+        "followers": 51,
         "stars": "⭐⭐⭐⭐"
         },
         {
@@ -58,7 +58,7 @@
         "profil_picture": "https://randomuser.me/api/portraits/men/23.jpg",
         "description": "Je suis étudiant et j'adore découvrir des saveurs locales.",
         "city": "Zurich",
-        "followers": 245,
+        "followers": 1003,
         "stars": "⭐⭐⭐⭐"
         },
         {
@@ -67,14 +67,14 @@
         "profil_picture": "https://randomuser.me/api/portraits/women/44.jpg",
         "description": "Grande fan de pâtisserie, je fais des gâteaux pour mes amis.",
         "city": "Berne",
-        "followers": 245,
+        "followers": 600,
         "stars": "⭐⭐⭐"
         },
         {
         "id": 5,
         "name": "David",
         "profil_picture": "https://randomuser.me/api/portraits/men/19.jpg",
-        "description": "Je collectionne les ustensiles de cuisine rares.",
+        "description": "Je collectione et resstaure des oeuvres d'art, plus précisément des peintures et statues.",
         "city": "Lausanne",
         "followers": 245,
         "stars": "⭐⭐⭐⭐"
