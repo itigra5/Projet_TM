@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('produit', {
+  const Produit = sequelize.define('produit', {
     idProduit: {
       autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
@@ -31,12 +31,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    'idCatégorie_produit': {
+    'idCategorie_produit': {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       references: {
-        model: 'catégorie',
-        key: 'idCatégorie'
+        model: 'categorie',
+        key: 'idCategorie'
       }
     }
   }, {
@@ -63,9 +63,21 @@ module.exports = function(sequelize, DataTypes) {
         name: "idCatégorie_produit_idx",
         using: "BTREE",
         fields: [
-          { name: "idCatégorie_produit" },
+          { name: "idCategorie_produit" },
         ]
       },
     ]
   });
+
+    Produit.associate = function(models) {
+    // un produit a plusieurs photos
+    Produit.hasMany(models.PhotoProduit, {
+      foreignKey: 'idProduit_Photo', // correspond à la clé dans PhotoProduit
+      as: 'photos'                   // nom de l'association pour l'include
+    });
+  };
+
+  return Produit;
 };
+
+

@@ -9,6 +9,7 @@ function Add() {
   const [images, setImages] = useState([]);
   const fileRef = useRef();
 
+
   return (
     <div className="add-page">
       <div className="add-card">
