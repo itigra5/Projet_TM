@@ -1,27 +1,43 @@
-import React from "react";
-import './InfoProfil.css';
+import React, { useState } from "react";
+import "./InfoProfil.css";
 
-function InfoProfil({name, city, pp, stars, description }){
-    return(
-        <>
-        <div id="info_profil">
-            <img class="profil_picture" src={pp} alt={`image of ${name}`} />
-            <div class="info_profile_infos">
-                <p class="pseudo">{name}</p>
-                <p class="city">{city}</p>
-                {/* add les etoiles, à voir comment SANS LIBRAIRY */}
-                <div class="star">
-                    <span><i class="fa-regular fa-star"></i></span>
-                    <span><i class="fa-regular fa-star"></i></span>
-                    <span><i class="fa-regular fa-star"></i></span>
-                    <span><i class="fa-regular fa-star"></i></span>
-                </div>                
-            </div>
-            <p class="description">{description}</p>
+function InfoProfil({ name, city, pp, stars, followers, description }) {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [followersCount, setFollowersCount] = useState(followers ?? 0);
+
+  const handleFollow = () => {
+    setIsFollowing(p => !p);
+    setFollowersCount(c => (isFollowing ? c - 1 : c + 1));
+  };
+
+  return (
+    <div className="profile_wrapper">
+      <div className="profile_header">
+        <img className="profil_picture" src={pp} alt={`Photo de ${name}`} />
+
+        {/* Colonne milieu : nom + ville + étoiles */}
+        <div className="identity">
+          <h2 className="pseudo">{name}</h2>
+          <p className="city">{city}</p>
+          <p className="stars">{stars}</p>
         </div>
-        </>
-    );
-}
 
+        {/* Colonne droite : followers + bouton */}
+        <div className="follow_inline">
+          <span className="followers_count">{followersCount} followers</span>
+          <button
+            className={`follow_btn ${isFollowing ? "following" : ""}`}
+            onClick={handleFollow}
+          >
+            {isFollowing ? "Abonné(e)" : "Suivre"}
+          </button>
+        </div>
+      </div>
+
+      
+      <p className="description">{description}</p>
+    </div>
+  );
+}
 
 export default InfoProfil;
