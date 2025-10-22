@@ -16,7 +16,6 @@ function Search_2(){
             const res = await fetch(`http://localhost:3000/categories/${id}/${NomCategorie}`);
             const data = await res.json();
             setSousCategories(data);
-            console.log("Params:", { id, NomCategorie });
           } catch (err) {
             console.error('Erreur :', err);
           }

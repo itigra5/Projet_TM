@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const catRoutes = require('./routes/cathegoriesRoutes');
 const sequelize = require('./lib/db');
+const artRoutes =require('./routes/articlesRoutes');
 
 const app= express();
 app.use(cors())
@@ -17,6 +18,7 @@ app.get('/hey', (req, res) => {
 
 // Routes
 app.use("/categories", catRoutes);
+app.use("/articles", artRoutes);
 
 
 app.listen(3000 , () => {

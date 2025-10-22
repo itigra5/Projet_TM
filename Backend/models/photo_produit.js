@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('photo produit', {
+  const PhotoProduit = sequelize.define('photo_produit', {
     idPhoto: {
       autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'photo produit',
+    tableName: 'photo_produit',
     timestamps: false,
     indexes: [
       {
@@ -41,4 +41,16 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+
+
+  PhotoProduit.associate = function(models) {
+    PhotoProduit.belongsTo(models.Produit, {
+      foreignKey: 'idProduit_Photo',
+      as: 'produit'  // ce nom sera utilisé dans include
+    });
+  };
+
+  return PhotoProduit;
 };
+
+
