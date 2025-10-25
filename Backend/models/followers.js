@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   return sequelize.define('followers', {
     idAbonnement: {
       type: DataTypes.INTEGER.UNSIGNED,
+      primaryKey: true,
       allowNull: false,
       references: {
         model: 'user',
@@ -11,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     'idAbonné': {
       type: DataTypes.INTEGER.UNSIGNED,
+      primaryKey: true,
       allowNull: false,
       references: {
         model: 'user',
@@ -21,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 'followers',
     timestamps: false,
+    freezeTableName: true,
     indexes: [
       {
         name: "idAbonnement_idx",

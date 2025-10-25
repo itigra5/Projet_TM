@@ -27,7 +27,7 @@ function App(){
                     </Route>
             
                     <Route path="Add" element={<Add/>}/>
-                    <Route path="Profile" element={<Profile/>}/>
+                    <Route path="Profile/:id" element={<Profile/>}/>
                     <Route path="Cart" element={<Cart/>}/>  
                     {/* les routes pour les 1ere cat*/}
                     <Route path="Search/:id/:NomCategorie" element={<Search_2/>}></Route>

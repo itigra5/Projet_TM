@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./InfoProfil.css";
 
 function InfoProfil({ name, city, pp, stars, followers, description }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followersCount, setFollowersCount] = useState(followers ?? 0);
+
+  useEffect(() => {
+  setFollowersCount(followers ?? 0);
+}, [followers]);
 
   const handleFollow = () => {
     setIsFollowing(p => !p);

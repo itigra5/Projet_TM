@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { models } = require('../models'); 
-const { where } = require("sequelize");
 
 router.get('/', async (req, res) => {
     try{
@@ -16,17 +15,6 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// // // router.get('/images/:id', async (req, res) => {
-// // //     try{
-// // //         const image = await models.PhotoProduit.findOne({
-// // //             where : {idProduit_Photo : req.params.id}
-// // //         });
-// // //         res.json(image)
-// // //     }catch (err){
-// // //         res.status(500).json(err);
-// // //     }
-// // // });
 
 
 router.post('/post', async (req, res) => {
