@@ -17,7 +17,7 @@ function CatSection({titre, lien, image, id}) {
 
     </Link>
     </>
-    );
+    );      
 }
 
 export default CatSection;

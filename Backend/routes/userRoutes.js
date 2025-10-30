@@ -24,5 +24,16 @@ router.get('/followers/:id', async (req, res) => {
     }
 });
 
+router.post('/followers/add/:id', async (req, res) => {
+    try{
+
+
+        await models.Follower.create({idAbonnement : req.params.id, idAbonné : 100})
+        res.status(201).json({ message: "Abonnement ajouté !" });
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
 
 module.exports = router;
