@@ -6,6 +6,12 @@ const userRoutes =require('./routes/userRoutes');
 const sequelize = require('./lib/db');
 const path = require('path');
 
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app= express();
 app.use(cors())
 app.use(express.json())
@@ -13,14 +19,13 @@ app.use(express.json())
 
 // Pour que Express s'occupe du front end
 
-// Servir les fichiers statiques de React
-app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+// Sert les fichiers statiques du frontend
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-// Rediriger toutes les requêtes vers index.html
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+// Route “catch-all” pour le frontend
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..','dist', 'index.html'));
 });
-
 
 app.get('/', (req, res) => {
     res.send("merci, ça marche !");
