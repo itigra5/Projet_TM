@@ -19,7 +19,7 @@ app.use("/articles", artRoutes);
 app.use("/user", userRoutes);
 
 
-const PORT = process.env.DB_PORT;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log("Server is running !")
