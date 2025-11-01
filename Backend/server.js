@@ -12,6 +12,16 @@ app.use(cors())
 app.use(express.json())
 
 
+app.get('/', (req, res) => {
+    res.send("merci, ça marche !");
+});
+
+// Routes
+app.use("/categories", catRoutes);
+app.use("/articles", artRoutes);
+app.use("/user", userRoutes);
+
+
 // Pour que Express s'occupe du front end
 
 // Servir les fichiers statiques de React
@@ -21,16 +31,6 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
-
-
-app.get('/', (req, res) => {
-    res.send("merci, ça marche !");
-});
-
-// Routes
-app.use("/categories", catRoutes);
-app.use("/articles", artRoutes);
-app.use("/user", userRoutes);
 
 
 const PORT = process.env.PORT;
