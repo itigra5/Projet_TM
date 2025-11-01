@@ -9,7 +9,7 @@ function Search_1(){
   useEffect(() => {
     async function loadCategories() {
       try {
-        const res = await fetch("http://localhost:3000/categories");
+        const res = await fetch("/categories");
         const data = await res.json();
         setCategories(data); // on stocke dans le state
       } catch (err) {

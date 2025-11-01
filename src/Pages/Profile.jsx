@@ -40,7 +40,7 @@ function Profile() {
 
       async function FollowUser() {
         try{
-          const res = await fetch(`http://localhost:3000/user/followers/add/${id}`, {
+          const res = await fetch(`/user/followers/add/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

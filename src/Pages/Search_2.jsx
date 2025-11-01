@@ -13,7 +13,7 @@ function Search_2(){
     useEffect(() => {
       async function loadSousCategories() {
         try {
-            const res = await fetch(`http://localhost:3000/categories/${id}/${NomCategorie}`);
+            const res = await fetch(`/categories/${id}/${NomCategorie}`);
             const data = await res.json();
             setSousCategories(data);
           } catch (err) {
