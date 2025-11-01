@@ -4,10 +4,14 @@ const catRoutes = require('./routes/cathegoriesRoutes');
 const artRoutes =require('./routes/articlesRoutes');
 const userRoutes =require('./routes/userRoutes');
 const sequelize = require('./lib/db');
+const path = require('path');
+
+const app= express();
+app.use(cors())
+app.use(express.json())
+
 
 // Pour que Express s'occupe du front end
-
-const path = require('path');
 
 // Servir les fichiers statiques de React
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
@@ -17,11 +21,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
 });
 
-
-
-const app= express();
-app.use(cors())
-app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send("merci, ça marche !");
