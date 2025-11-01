@@ -17,7 +17,7 @@ function Profile() {
     useEffect(() => {
       async function loadProfile() {
         try {
-            const res = await fetch(`http://localhost:3000/user/${id}`);
+            const res = await fetch(`/user/${id}`);
             const data = await res.json();
             setProfile(data);
           } catch (err) {
@@ -27,7 +27,7 @@ function Profile() {
 
       async function CountFollowers() {
         try{
-          const res = await fetch(`http://localhost:3000/user/followers/${id}`);
+          const res = await fetch(`/user/followers/${id}`);
           console.log("res.ok :", res.ok);
           const data = await res.json();
           console.log("data reçu :", data);
