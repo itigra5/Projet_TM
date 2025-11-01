@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 // Rediriger toutes les requêtes vers index.html
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 
