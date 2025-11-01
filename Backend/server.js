@@ -19,6 +19,6 @@ app.use("/articles", artRoutes);
 app.use("/user", userRoutes);
 
 
-app.listen(process.env.DB_PORT , () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running !")
 });
