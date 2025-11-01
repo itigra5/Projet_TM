@@ -5,6 +5,20 @@ const artRoutes =require('./routes/articlesRoutes');
 const userRoutes =require('./routes/userRoutes');
 const sequelize = require('./lib/db');
 
+// Pour que Express s'occupe du front end
+
+const path = require('path');
+
+// Servir les fichiers statiques de React
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+
+// Rediriger toutes les requêtes vers index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
+
+
 const app= express();
 app.use(cors())
 app.use(express.json())
@@ -21,6 +35,6 @@ app.use("/user", userRoutes);
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0',  () => {
     console.log("Server is running !")
 });
