@@ -40,9 +40,7 @@ function App(){
                     <Route path="Add" element={<Add/>}/>
                     <Route path="Profile/:id" element={<Profile/>}/>
                     <Route path="Cart" element={<Cart/>}/>  
-                    {/* les routes pour les 1ere cat*/}
                     <Route path="Search/:id/:NomCategorie" element={<Search_2/>}></Route>
-                    {/* Toute les routes des 2nd cat */}
                     <Route path="/Scroll" element={<Scrolling/>}></Route>
                     
                     {/* route pour erreur 404, reste la der */}

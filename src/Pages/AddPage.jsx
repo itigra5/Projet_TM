@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect} from "react";
 import "../Components/AddPage.css"
 
 function Add() {
@@ -6,8 +6,103 @@ function Add() {
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
   const fileRef = useRef();
+
+
+      async function handleCancel() {
+        try{
+          setTitle("");
+          setDesc("");
+          setPrice("");
+          setCategory("");
+          setImages([]);
+        }catch(err){
+          console.error('Erreur :', err)
+        }
+      };
+
+      async function handleSubmit() {
+        try{
+
+        const categoryObj = categories.find(cat => cat.NomCategorie === category);
+        const categoryId = categoryObj ? categoryObj.idCategorie : null;
+
+        if (!categoryId) {
+            alert("Veuillez choisir une catégorie valide !");
+            return;
+          }
+
+        // Vérifie que le titre et la description ne sont pas vides
+        if (!title.trim() || !desc.trim()) {
+            alert("Le titre et la description sont obligatoires !");
+            return;
+          }
+
+            // Vérifie que le prix est un nombre valide
+    const priceNum = Number(price);
+    if (isNaN(priceNum) || priceNum < 0) {
+      alert("Veuillez entrer un prix valide !");
+      return;
+    }
+
+          // Prépare les données à envoyer
+          const data = {
+            title: title.trim(),
+            desc: desc.trim(),
+            price: priceNum,
+            categoryId
+          };
+
+          console.log("Le bouton !", data)
+          const res = await fetch("http://localhost:3000/articles/post", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+              throw new Error("Erreur lors de l'ajout de l'article");
+          }
+
+          const result = await res.json();
+          alert("ça a marché !")
+        }catch(err){
+          console.error('Erreur :', err)
+        }
+      };
+
+      async function handleUpload(e) {
+        try{
+          const file = e.target.files[0];
+          const formData = new FormData();
+          formData.append('image', file);
+
+          const res = await fetch('http://localhost:3000/articles/upload', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await res.json();
+          console.log('Lien Cloudinary:', data.url);
+        }catch(err){
+          console.error('Erreur :', err)
+        }
+        };
+
+  useEffect(() => {
+      async function loadCategories() {
+        try {
+          const res = await fetch("http://localhost:3000/categories");
+          const data = await res.json();
+          setCategories(data); // on stocke dans le state
+        } catch (err) {
+          console.error('Erreur :', err);
+        }
+      };
+
+      loadCategories();
+  }, []);
 
 
   return (
@@ -46,7 +141,7 @@ function Add() {
               multiple
               ref={fileRef}
               style={{ display: "none" }}
-              onChange={(e) => handleImages(e.target.files)}
+              onChange={handleUpload}
             />
           </div>
         </div>
@@ -59,7 +154,7 @@ function Add() {
             rows="4"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
-            placeholder="Décris ton produit / ton annonce..."
+            placeholder="Décris ton annonce..."
           />
         </label>
 
@@ -84,19 +179,19 @@ function Add() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Choisir une catégorie</option>
-            <option value="vetement">Pâtisserie</option>
-            <option value="electronique">Cuisine</option>
-            <option value="maison">Bijoux</option>
-            <option value="artEtcollection">Art & Collection</option>
-            <option value="couture">Couture</option>
+            {categories.map(cat => (
+              <option  key={cat.idCategorie} value={cat.NomCategorie}>
+                {cat.NomCategorie}
+              </option>
+            ))}
 
           </select>
         </label>
 
         {/* Boutons bas */}
         <div className="actions">
-          <button className="btn outline" type="button">Annuler</button>
-          <button className="btn primary" type="button">Ajouter</button>
+          <button className="btn outline" type="button" onClick={handleCancel}>Annuler</button>
+          <button className="btn primary" type="button" onClick={handleSubmit}>Ajouter</button>
         </div>
       </div>
     </div>
