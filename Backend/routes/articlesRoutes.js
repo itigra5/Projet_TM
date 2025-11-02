@@ -44,14 +44,35 @@ router.post('/post', async (req, res) => {
 
 
 // pour les Images
-router.post('/upload', upload.single('image'), async (req, res) => {
+
+router.post('/upload', upload.array('image'), async (req, res) => {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
-    res.json({ url: result.secure_url });
+    const { idProduit_Photo } = req.body;
+    const uploadedUrls = [];
+    
+    console.log("req.body:", req.body);
+    console.log("req.files:", req.files);
+
+    console.log("traitement...")
+
+    for (const file of req.files) {
+    // les poster sur cloudinary
+    const result = await cloudinary.uploader.upload(file.path);
+
+    const newPhoto = await models.PhotoProduit.create({
+      idProduit_Photo: idProduit_Photo,
+      Images: result.secure_url
+    });
+
+    uploadedUrls.push(result.secure_url);
+    }
+
+    res.json({ urls : uploadedUrls  });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json(err);
   }
 });
+
 
 
 

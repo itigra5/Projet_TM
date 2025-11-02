@@ -55,6 +55,7 @@ function Add() {
             categoryId
           };
 
+      // Créer le produit
           console.log("Le bouton !", data)
           const res = await fetch("http://localhost:3000/articles/post", {
             method: 'POST',
@@ -66,17 +67,23 @@ function Add() {
           }
 
           const result = await res.json();
+          const produitId = result.id;
           alert("ça a marché !")
+      // Loader les images
+
+        await handleUpload(produitId);
+
         }catch(err){
           console.error('Erreur :', err)
         }
       };
 
-      async function handleUpload(e) {
+      async function handleUpload(produitId) {
         try{
-          const file = e.target.files[0];
+          for (const file of images){
           const formData = new FormData();
-          formData.append('image', file);
+          formData.append('image', file.file);
+          formData.append('idProduit_Photo', produitId);
 
           const res = await fetch('http://localhost:3000/articles/upload', {
             method: 'POST',
@@ -85,11 +92,11 @@ function Add() {
 
           const data = await res.json();
           console.log('Lien Cloudinary:', data.url);
+          }
         }catch(err){
-          console.error('Erreur :', err)
-        }
-        };
-
+          console.error('Erreur :', err);
+        } 
+      };
   useEffect(() => {
       async function loadCategories() {
         try {
@@ -105,7 +112,7 @@ function Add() {
   }, []);
 
 
-  return (
+  return(
     <div className="add-page">
       <div className="add-card">
 
@@ -141,7 +148,19 @@ function Add() {
               multiple
               ref={fileRef}
               style={{ display: "none" }}
-              onChange={handleUpload}
+              onChange={(e) => {
+                      // Récupère tous les fichiers sélectionnés
+                      const files = Array.from(e.target.files);
+
+                      // On crée un tableau d'objets avec url temporaire pour affichage
+                      const newImages = files.map((file) => ({
+                        file,
+                        url: URL.createObjectURL(file),
+                      }));
+
+                      // Met à jour le state images
+                      setImages((prev) => [...prev, ...newImages]);
+                  }}
             />
           </div>
         </div>
@@ -197,5 +216,4 @@ function Add() {
     </div>
   );
 }
-
 export default Add;
