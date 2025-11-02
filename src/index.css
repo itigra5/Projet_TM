@@ -23,7 +23,7 @@ body{
     padding-bottom: 1rem;
     font-family: "Averia Serif Libre", serif;
     font-size: 27px;
-    margin-left: 6%;
+    margin-left: 7%;
     font-weight: 300;
 }
 
@@ -31,8 +31,11 @@ body{
 .BigTitle{
     display: flex;
     justify-content: center;
-    text-decoration: underline rgb(248, 173, 173);
+    text-decoration: underline 4px rgb(242, 176, 176);
+    text-underline-offset: 5px;
     font-family: "Averia Serif Libre", serif;
+    font-size: 40px;
+    font-weight: 300;
 }
 
 /* for all the links */

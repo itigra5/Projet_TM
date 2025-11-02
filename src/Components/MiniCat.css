@@ -1,15 +1,15 @@
 .CatMenu{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-    margin: 0px 10px;
+    gap: 0px 20px;
+    margin: 0px 20px;
 }
 
 .MiniCat{
     /* display: flexbox; */
     align-items: center;
     justify-content: center;
-    padding: 10%;
+    padding: 2%;
 }
 
 .ImageMiniCat{
@@ -21,8 +21,8 @@
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 20%;
-    background-color: rgb(244, 235, 235);
-    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(247, 224, 224);
+    border: 1.2px solid rgb(226, 188, 188);
 }
 
 .TitleMiniCat{
@@ -31,4 +31,8 @@
     text-align: center;
     justify-content: center;
     white-space: pre-line;
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 300;
+    
+    
 }
