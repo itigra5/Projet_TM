@@ -87,7 +87,7 @@ function ScrollUpper({ children, onAddToCart }) {
           </div>
         </div>
       )}
-      {/* ------ /POPUP QUANTITÉ ------ */}
+      
     </div>
   );
 }

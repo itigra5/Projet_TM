@@ -29,8 +29,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-color:  rgb(0, 0, 0);
+  border-top:  rgb(0, 0, 0);
   z-index: 10;
+  margin: 0;
 }
 
 .itemNavbar  {
@@ -70,9 +71,7 @@
 }
 
 /* Optionnel : s’assurer que le body ne scroll pas non plus */
-body.fixed-mode {
-  overflow: hidden;
-}
+
 
 /* Cadre centré + largeur/hauteur maîtrisées */
 .auth_container{
@@ -121,4 +120,29 @@ body.fixed-mode {
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+}
+
+/* Bouton cœur */
+.favorite-link {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.favorite-link:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.favorite-icon {
+  width: 26px;
+  height: 26px;
+  stroke: black;
+  fill: none;
 }
