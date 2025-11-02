@@ -1,0 +1,49 @@
+.signup_page {
+  min-height: 100dvh;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  font-family: "Averia Serif Libre", serif;
+}
+
+.signup_logo {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.signup_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.signup_form input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.signup_btn {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #000000;
+  color: white;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.signup_btn:hover {
+  background-color: #333;
+}

@@ -1,33 +1,35 @@
 import React from "react";
-import MiniProfil from "./MiniProfil";
 import myData from '../Data.json';
+import Stars from "./Stars";
 
+function ScrollLower({ desc }) {
+  const a = 1;
+  const user = myData.user[a];
 
-function ScrollLower({desc}){
-    const a = 1;
-    return(
-        <>
-            <div class="ScrollLower">
-                <div className="profil">
-                        <MiniProfil name={myData.user[a].name} city={myData.user[a].city} pp={myData.user[a].prifil_picture}/>  
-                    <div class="ProfilStars">
-                            <span><i class="fa-regular fa-star"></i></span>
-                            <span><i class="fa-regular fa-star"></i></span>
-                            <span><i class="fa-regular fa-star"></i></span>
-                            <span><i class="fa-regular fa-star"></i></span>
-                    </div>  
-                </div>
-                <p class="scrollDesc">{desc}</p>
-                <button 
-                    class="ingredients"
-                    // onClick={toggleingredients}
-                >
-                 Afficher les ingredients \/ \/ \/   
-                </button>
+  return (
+    <div className="ScrollLower">
+      <div className="profil">
+        {/* Bloc gauche = photo + nom + ville */}
+        <div className="MiniProfil">
+          <img className="MiniProfilPicture" src={user.profil_picture} alt={user.name} />
+          <div className="MiniProfilText">
+            <p className="MiniProfilName">{user.name}</p>
+            <p className="MiniProfilCity">{user.city}</p>
+          </div>
+        </div>
 
-            </div>
-        </>
-    );
+        {/* Bloc droit = étoiles */}
+          <Stars count={user.stars} />
+      </div>
+
+      {/* Description du produit */}
+      <p className="scrollDesc">{desc}</p>
+
+      <button className="ingredients">
+        Afficher les ingrédients \/ \/ \/
+      </button>
+    </div>
+  );
 }
 
 export default ScrollLower;

@@ -11,6 +11,9 @@ import NotFound from "./Pages/NotFound.jsx"
 import Search_2 from "./Pages/Search_2.jsx";
 import Scrolling from "./Pages/ScrollingPage.jsx";
 import './index.css'
+import Welcome from "./Components/welcome.jsx";
+import Inscription from "./Components/Inscription";
+import Connexion from "./Components/Connexion";
 
 
 function App(){
@@ -18,6 +21,14 @@ function App(){
     <div id="body">
         <BrowserRouter>
             <Routes>
+                {/* Pages sans Layout */}
+                <Route path="/welcome" element={<Welcome />} />
+                <Route path="/inscription" element={<Inscription />} />
+                <Route path="/connexion" element={<Connexion />} />
+
+                
+                {/* Pages avec Layout */}
+                
                 <Route path="/" element={<Layout/>}>
                 {/* Pages avec searchBox ici, et le rest en dehors (idée originale hehehe) */}
                     <Route element={<SearchBox/>}>

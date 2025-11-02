@@ -1,23 +1,16 @@
-import './Categoriesort.css'
+import './Categoriesort.css';
 import { Link } from 'react-router-dom';
 
+function CatSection({ titre, lien, image, id }) {
+  return (
+    <Link to={lien} className="ClassSort" id={id}>
+      
+      <img className="cat_img" src={image} alt={`image de ${titre}`} />
 
-function CatSection({titre, lien, image, id}) {
-    return(
-
-    //Pour pouvoir mettre plein d'element wooow (je parle de ça <>)
-    <>
-    <Link
-        to={lien}
-        class="ClassSort"
-        id={id}
-    >
-    <span>{titre}</span>
-    <img class="cat_img" src={image} alt={`image de ${titre}`}/>
-
+      
+      <div className="cat_title">{titre}</div>
     </Link>
-    </>
-    );      
+  );
 }
 
 export default CatSection;
