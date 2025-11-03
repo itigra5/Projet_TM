@@ -7,7 +7,7 @@ function Scrolling() {
     useEffect(() => {
         async function loadProduct() {
             try{
-                const res = await fetch("http://localhost:3000/articles");
+                const res = await fetch("/articles");
                 const data = await res.json();
                 setProduit(data);
             }catch(err){
