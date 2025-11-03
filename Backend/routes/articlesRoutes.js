@@ -11,7 +11,13 @@ router.get('/', async (req, res) => {
             include: [{
                 model: models.PhotoProduit,
                 as: 'photos'
-            }]
+            },
+        {
+          model: models.User,  
+          as: 'vendeur',     
+          attributes: ['idUser', 'Nom', 'Ville', 'profil_picture', 'Stars']
+        }
+    ]
         });
         res.json(articles)
     }catch (err){

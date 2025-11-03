@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AnnonceSwip from "../Components/AnnonceSwip";
 
 function Scrolling() {
+    const [produit, setProduit] = useState([]);
+
+    useEffect(() => {
+        async function loadProduct() {
+            try{
+                const res = await fetch("http://localhost:3000/articles");
+                const data = await res.json();
+                setProduit(data);
+            }catch(err){
+        console.error('Erreur :', err);
+            }
+        }
+
+        // Appeler les fonctions
+        loadProduct();
+        
+    }, [])
+
   return (
     <div className="scrollPage">
-      <section className="Slide"><AnnonceSwip /></section>
-      <section className="Slide"><AnnonceSwip /></section>
-      <section className="Slide"><AnnonceSwip /></section>
+      {produit.map((a) => (
+    <section className="Slide" key={a.idProduit}>
+        <AnnonceSwip
+          images={a.photos?.map((p) => p.Images) || []}
+          desc={a.Description}
+          profil_picture={a.vendeur?.PhotoProfil}
+          name={a.vendeur?.Nom}
+          city={a.vendeur?.Ville}
+          stars={a.vendeur?.Stars}
+      />
+    </section>
+))}
     </div>
   );
 }

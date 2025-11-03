@@ -72,10 +72,13 @@ module.exports = function(sequelize, DataTypes) {
     Produit.associate = function(models) {
     // un produit a plusieurs photos
     Produit.hasMany(models.PhotoProduit, {
-      foreignKey: 'idProduit_Photo', // correspond à la clé dans PhotoProduit
-      as: 'photos'                   // nom de l'association pour l'include
+      foreignKey: 'idProduit_Photo', 
+      as: 'photos'                   
     });
+
+    Produit.belongsTo(User, { as: 'vendeur', foreignKey: 'idUser' });
   };
+
 
   return Produit;
 };

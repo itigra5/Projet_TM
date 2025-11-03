@@ -2,15 +2,20 @@ import React from "react";
 import ScrollUpper from "./ScrollUpper";
 import ScrollLower from "./ScrollLower";
 
-function AnnonceSwip(){
+function AnnonceSwip({images, desc, profil_picture, name, city, stars }){
     return(
         <>
             <ScrollUpper>
-                <img class="scrollImg" src="https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp" alt="je sais pas" />
-                <img class="scrollImg" src="https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp" alt="je sais pas" />
-                <img class="scrollImg" src="https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp" alt="je sais pas" />
+                {images.map((img, index) => (
+                    <img 
+                    key={index}
+                    class="scrollImg" 
+                    src={img} 
+                    alt={`image ${index + 1}`} />
+                ))}
+                
             </ScrollUpper> 
-            <ScrollLower desc="Exelents mufins tres tres bon miam"/>
+            <ScrollLower desc={desc} profil_picture={profil_picture} name={name} city={city} stars={stars} />
         </>
     );
 }
