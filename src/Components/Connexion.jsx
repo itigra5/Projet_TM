@@ -13,10 +13,23 @@ export default function Connexion() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     console.log("Tentative de connexion :", form);
-    // Ici tu feras la vérification via ton backend
+    
+    const res = await fetch("http://localhost:3000/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || "Erreur lors de la connexion");
+
+    // Stocke le token JWT
+    localStorage.setItem("token", data.token);
+    
     navigate("/"); // redirige vers accueil ou profil après connexion
   };
 

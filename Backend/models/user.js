@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    'Mot de passe': {
+    'Mot_de_passe': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
