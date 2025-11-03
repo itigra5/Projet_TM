@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Search_1 from "./Pages/Search_1";
 import Home from "./Pages/Home";
@@ -30,7 +30,11 @@ function App(){
                 
                 {/* Pages avec Layout */}
                 
-                <Route path="/" element={<Layout/>}>
+                <Route
+                        path="/"
+                        element={
+                            localStorage.getItem("token") ? <Home />  : <Navigate to="/welcome" />}
+                            />
                 {/* Pages avec searchBox ici, et le rest en dehors (idée originale hehehe) */}
                     <Route element={<SearchBox/>}>
                         {/* index means that this route will render when we call the parent */}
@@ -47,7 +51,6 @@ function App(){
                     
                     {/* route pour erreur 404, reste la der */}
                     <Route path="*" element={<NotFound/>}/>
-                </Route>
             </Routes>
         </BrowserRouter>
     </div>
