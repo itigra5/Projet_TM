@@ -5,6 +5,7 @@ function Add() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
@@ -16,6 +17,7 @@ function Add() {
           setTitle("");
           setDesc("");
           setPrice("");
+          setQuantity("")
           setCategory("");
           setImages([]);
         }catch(err){
@@ -41,17 +43,24 @@ function Add() {
           }
 
             // Vérifie que le prix est un nombre valide
-    const priceNum = Number(price);
-    if (isNaN(priceNum) || priceNum < 0) {
-      alert("Veuillez entrer un prix valide !");
-      return;
-    }
+        const priceNum = Number(price);
+        if (isNaN(priceNum) || priceNum < 0) {
+          alert("Veuillez entrer un prix valide !");
+          return;
+        }
+                // Vérifie que la quantité est un nombre valide
+        const quantityNum = Number(quantity);
+          if (isNaN(quantityNum) || quantityNum <= 0) {
+          alert("Veuillez entrer une quantité valide !");
+          return;
+        }
 
           // Prépare les données à envoyer
           const data = {
             title: title.trim(),
             desc: desc.trim(),
             price: priceNum,
+            quantity: quantityNum,
             categoryId
           };
 
@@ -67,7 +76,7 @@ function Add() {
           }
 
           const result = await res.json();
-          const produitId = result.id;
+          const produitId = result.idProduit;
           alert("ça a marché !")
       // Loader les images
 
@@ -80,9 +89,9 @@ function Add() {
 
       async function handleUpload(produitId) {
         try{
-          for (const file of images){
+          for (const img of images){
           const formData = new FormData();
-          formData.append('image', file.file);
+          formData.append('image', img.file);
           formData.append('idProduit_Photo', produitId);
 
           const res = await fetch('http://localhost:3000/articles/upload', {
@@ -91,7 +100,7 @@ function Add() {
           });
 
           const data = await res.json();
-          console.log('Lien Cloudinary:', data.url);
+          console.log('Lien Cloudinary:', data.urls);
           }
         }catch(err){
           console.error('Erreur :', err);
@@ -189,6 +198,18 @@ function Add() {
           />
         </label>
 
+        {/* Quantité */}
+        <label className="field small">
+          <span className="label-text">Quantité</span>
+          <input
+            className="input"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            placeholder="Ex: 5"
+            inputMode="numeric"
+          />
+        </label>
+
         {/* Catégories */}
         <label className="field">
           <span className="label-text">Catégorie</span>
@@ -198,7 +219,7 @@ function Add() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Choisir une catégorie</option>
-            {categories.map(cat => (
+            {categories.map(cat => (  
               <option  key={cat.idCategorie} value={cat.NomCategorie}>
                 {cat.NomCategorie}
               </option>

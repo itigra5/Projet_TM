@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 router.post('/post', async (req, res) => {
     try{
         const idUser = 2;
-        const { title, desc, price, categoryId } = req.body;
+        const { title, desc, price, categoryId, quantity } = req.body;
 
         console.log("Data reçue:", req.body);
 
@@ -33,6 +33,7 @@ router.post('/post', async (req, res) => {
             Description: desc,
             Prix: price,
             idUser_produit: idUser,
+            Quantité: quantity,
             idCategorie_produit: categoryId,
             Quantité:  1 // à add dans le front
         });
