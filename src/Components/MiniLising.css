@@ -10,7 +10,7 @@
     position: relative;
     width: 130px ;
     height: 190px;
-    border: 0px;
+    border: 1px solid rgb(209, 207, 207);
     border-radius: 22px;
     overflow: hidden;
     padding: 0px;
@@ -29,6 +29,7 @@
     border-radius: 0px;
     height: 100%;
     width: 100%;
+    
 }
 
 /* le >>before vient de chatGPT */
