@@ -16,6 +16,7 @@ import Inscription from "./Components/Inscription";
 import Connexion from "./Components/Connexion";
 import FavorisPage from "./Pages/FavorisPage.jsx";
 import Annonce from "./Components/AnnonceSwip.jsx";
+import Protection from "./Components/protection.jsx";
 
 function App(){
     return (
@@ -27,27 +28,30 @@ function App(){
                 <Route path="/inscription" element={<Inscription />} />
                 <Route path="/connexion" element={<Connexion />} />
 
-                
-                {/* Pages avec Layout */}
-                
+                {/* pages prétegé */}
                 <Route
                         path="/"
                         element={
-                            localStorage.getItem("token") ? <Home />  : <Navigate to="/welcome" />}
-                            />
+                            <Protection>
+                                <Home/>
+                            </Protection>
+                        }/>
+
+                {/* Pages avec Layout */}
+                
                 {/* Pages avec searchBox ici, et le rest en dehors (idée originale hehehe) */}
                     <Route element={<SearchBox/>}>
                         {/* index means that this route will render when we call the parent */}
                         <Route index element={<Home/>}/>
-                        <Route path="Search_1" element={<Search_1/>} />
+                        <Route path="Search_1" element={ <Protection><Search_1/> </Protection>} />
                     </Route>
-                    <Route path="/produit/:id" element={<Annonce />} />
-                    <Route path="favoris" element={<FavorisPage/>} />
-                    <Route path="Add" element={<Add/>}/>
-                    <Route path="Profile/:id" element={<Profile/>}/>
-                    <Route path="Cart" element={<Cart/>}/>  
-                    <Route path="Search/:id/:NomCategorie" element={<Search_2/>}></Route>
-                    <Route path="/Scroll" element={<Scrolling/>}></Route>
+                    <Route path="/produit/:id" element={ <Protection><Annonce /> </Protection>} />
+                    <Route path="favoris" element={ <Protection><FavorisPage/> </Protection>} />
+                    <Route path="Add" element= { <Protection><Add/> </Protection>}/>
+                    <Route path="Profile/:id" element={<Protection><Profile/> </Protection>}/>
+                    <Route path="Cart" element={<Protection><Cart/> </Protection>}/>  
+                    <Route path="Search/:id/:NomCategorie" element={<Protection><Search_2/> </Protection>}></Route>
+                    <Route path="/Scroll" element={<Protection><Scrolling/></Protection>}></Route>
                     
                     {/* route pour erreur 404, reste la der */}
                     <Route path="*" element={<NotFound/>}/>
