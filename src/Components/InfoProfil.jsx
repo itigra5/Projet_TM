@@ -25,7 +25,7 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
       
       try {
         const res = await fetch(
-          `http://localhost:3000/user/followers/check/${id}`
+          `/user/followers/check/${id}`
         );
         const data = await res.json();
         console.log("il est follow ? en fr : ", data.isFollowing, "et br :", isFollowing)
@@ -41,7 +41,7 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
 // Pour s'abbonner
   async function FollowUser() {
         try{
-          const res = await fetch(`http://localhost:3000/user/followers/add/${id}`, {
+          const res = await fetch(`/user/followers/add/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

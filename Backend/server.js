@@ -4,6 +4,7 @@ const catRoutes = require('./routes/cathegoriesRoutes');
 const artRoutes =require('./routes/articlesRoutes');
 const userRoutes =require('./routes/userRoutes');
 const authRoutes = require('./routes/auth');
+const panierRoutes = require('./routes/panierRoutes');
 const path = require('path');
 
 
@@ -17,6 +18,8 @@ app.use("/categories", catRoutes);
 app.use("/articles", artRoutes);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
+app.use("/panier", panierRoutes);
+
 
 
 // Pour que Express s'occupe du front end

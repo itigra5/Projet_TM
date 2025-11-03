@@ -25,9 +25,6 @@ function ScrollLower({ desc }) {
       {/* Description du produit */}
       <p className="scrollDesc">{desc}</p>
 
-      <button className="ingredients">
-        Afficher les ingrédients \/ \/ \/
-      </button>
     </div>
   );
 }

@@ -66,7 +66,7 @@ function Add() {
 
       // Créer le produit
           console.log("Le bouton !", data)
-          const res = await fetch("http://localhost:3000/articles/post", {
+          const res = await fetch("/articles/post", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -94,7 +94,7 @@ function Add() {
           formData.append('image', img.file);
           formData.append('idProduit_Photo', produitId);
 
-          const res = await fetch('http://localhost:3000/articles/upload', {
+          const res = await fetch('/articles/upload', {
             method: 'POST',
             body: formData,
           });
@@ -109,7 +109,7 @@ function Add() {
   useEffect(() => {
       async function loadCategories() {
         try {
-          const res = await fetch("http://localhost:3000/categories");
+          const res = await fetch("/categories");
           const data = await res.json();
           setCategories(data); // on stocke dans le state
         } catch (err) {
