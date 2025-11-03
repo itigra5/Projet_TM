@@ -14,7 +14,29 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
 
   useEffect(() => {
   setFollowersCount(followers ?? 0);
-}, [followers]);
+
+  async function checkFollow() {
+   
+    // Si c'est notre compt
+      if (parseInt(100) === parseInt(id)) {
+        setIsFollowing(null);
+        return;
+      };
+      
+      try {
+        const res = await fetch(
+          `http://localhost:3000/user/followers/check/${id}`
+        );
+        const data = await res.json();
+        console.log("il est follow ? en fr : ", data.isFollowing, "et br :", isFollowing)
+        setIsFollowing(data.isFollowing);
+  }catch(err){
+    console.log('Erreur :', err)
+  }
+  }
+
+  checkFollow();
+}, [followers, id]);
 
 // Pour s'abbonner
   async function FollowUser() {
@@ -33,11 +55,16 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
         }
       }
 
+  
+
 // Changer de front quand on s'abbonne
   const handleFollow = () => {
-    setIsFollowing(p => !p);
-    setFollowersCount(c => (isFollowing ? c - 1 : c + 1));
-  };
+  setIsFollowing((prev) => {
+    const newState = !prev;
+    setFollowersCount((c) => (newState ? c + 1 : c - 1));
+    return newState;
+  });
+};
 
   // Ce qui se passe quand on cliques
     const handleClickFollow = async () => {
@@ -60,12 +87,14 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
         {/* Colonne droite : followers + bouton */}
         <div className="follow_inline">
           <span className="followers_count">{followersCount} followers</span>
+          {isFollowing !== null && (
           <button
             className={`follow_btn ${isFollowing ? "following" : ""}`}
             onClick={handleClickFollow}
           >
             {isFollowing ? "Abonné(e)" : "Suivre"}
           </button>
+          )}
         </div>
       </div>
 

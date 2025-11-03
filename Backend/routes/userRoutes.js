@@ -4,15 +4,6 @@ const { models } = require('../models');
 const { where } = require("sequelize");
 
 
-router.get('/:id', async (req, res) => {
-    try{
-        const user = await models.User.findByPk(req.params.id);
-        res.json(user)
-    }catch (err){
-        res.status(500).json(err);
-    }
-});
-
 router.get('/followers/:id', async (req, res) => {
     try{
         const {count, rows} = await models.Follower.findAndCountAll({
@@ -24,16 +15,46 @@ router.get('/followers/:id', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try{
+        const user = await models.User.findByPk(req.params.id);
+        res.json(user)
+    }catch (err){
+        res.status(500).json(err);
+    }
+});
+
 router.post('/followers/add/:id', async (req, res) => {
     try{
-
-
-        await models.Follower.create({idAbonnement : req.params.id, idAbonné : 100})
+        await models.Follower.create({idAbonnement : req.params.id, idAbonné : 9})
         res.status(201).json({ message: "Abonnement ajouté !" });
     }catch(err){
         res.status(500).json(err)
     }
 });
+
+router.get('/followers/check/:id', async (req, res) => {
+    try{
+        const idAbonné = req.query.userId;
+        const idAbonnement = 100;
+
+        const follow = await models.Follower.findOne({
+            where: {idAbonnement, idAbonné}
+        })
+
+        console.log("est abbo ? ", follow)
+
+        if (follow) {
+      return res.json({ isFollowing: true });
+        }
+        else {
+      return res.json({ isFollowing: false });
+        }
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
 
 
 module.exports = router;
