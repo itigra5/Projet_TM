@@ -27,10 +27,10 @@ function Scrolling() {
         <AnnonceSwip
           images={a.photos?.map((p) => p.Images) || []}
           desc={a.Description}
-          profil_picture={a.vendeur?.PhotoProfil}
+          profil_picture={a.vendeur?.Photo_de_profil}
           name={a.vendeur?.Nom}
-          city={a.vendeur?.Ville}
-          stars={a.vendeur?.Stars}
+          city={a.vendeur?.Adresse}
+          stars={a.vendeur?.Nombre_etoile}
       />
     </section>
 ))}

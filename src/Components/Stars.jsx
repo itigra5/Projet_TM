@@ -1,7 +1,7 @@
 // Components/Stars.jsx
 import React from "react";
 
-function Stars({ count = 0 }) {
+function Stars({count}) {
   return (
     <div className="Stars">
       {[...Array(count)].map((_, i) => (

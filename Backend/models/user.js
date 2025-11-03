@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'Photo de profil': {
+    'Photo_de_profil': {
       type: DataTypes.STRING(45),
       allowNull: true
     },
@@ -40,7 +40,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(45),
       allowNull: true
     },
-    "Nombre d'etoile": {
+    "Nombre_etoile": {
       type: DataTypes.INTEGER,
       allowNull: true
     },
@@ -81,7 +81,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
    User.associate = (models) => {
-    User.hasMany(models.Produit, { as: 'produits', foreignKey: 'idUser' });
+    User.hasMany(models.Produit, { as: 'produits', foreignKey: 'idUser_produit' });
   };
 
   return User;

@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         {
           model: models.User,  
           as: 'vendeur',     
-          attributes: ['idUser', 'Nom', 'Ville', 'profil_picture', 'Stars']
+          attributes: ['idUser', 'Nom', 'Adresse', 'Photo_de_profil', 'Nombre_etoile']
         }
     ]
         });
