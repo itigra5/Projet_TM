@@ -3,7 +3,7 @@ const cors = require('cors');
 const catRoutes = require('./routes/cathegoriesRoutes');
 const artRoutes =require('./routes/articlesRoutes');
 const userRoutes =require('./routes/userRoutes');
-const sequelize = require('./lib/db');
+const authRoutes = require('./routes/auth');
 const path = require('path');
 
 
@@ -12,14 +12,11 @@ app.use(cors())
 app.use(express.json())
 
 
-app.get('/', (req, res) => {
-    res.send("merci, ça marche !");
-});
-
 // Routes
 app.use("/categories", catRoutes);
 app.use("/articles", artRoutes);
 app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 
 
 // Pour que Express s'occupe du front end

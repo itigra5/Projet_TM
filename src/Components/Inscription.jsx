@@ -17,12 +17,36 @@ export default function Inscription() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
     if (form.password !== form.confirm) {
       alert("Les mots de passe ne correspondent pas !");
       return;
     }
+  // Créer le produit
+        const body = {
+          prenom: form.prenom,
+          nom: form.nom,
+          email: form.email,
+          password: form.password,
+          ville: form.ville
+        };
+
+
+          console.log("Le bouton !", form)
+          const res = await fetch("http://localhost:3000/auth/signin", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          if (!res.ok) {
+              throw new Error("Erreur lors de la création du compte");
+          }
+
+          const result = await res.json();
+          alert("ça a marché !")
+
+
     console.log("Nouvel utilisateur :", form);
     navigate("/connexion");
   };
