@@ -38,22 +38,6 @@ function Profile() {
         }
       }
 
-      async function FollowUser() {
-        try{
-          const res = await fetch(`http://localhost:3000/user/followers/add/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }});
-
-    const data = await res.json();
-    console.log("Réponse du serveur :", data);
-
-        }catch(err){
-          console.error('Erreur :', err);         
-        }
-      }
-
         loadProfile();
         CountFollowers()
       }, [nbrFollowers]);
