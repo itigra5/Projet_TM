@@ -2,10 +2,10 @@ import React from "react";
 import ScrollUpper from "./ScrollUpper";
 import ScrollLower from "./ScrollLower";
 
-function AnnonceSwip({images, desc, profil_picture, name, city, stars }){
+function AnnonceSwip({images, desc, profil_picture, name, city, stars, nameHigh }){
     return(
         <>
-            <ScrollUpper>
+            <ScrollUpper nameHigh={nameHigh}>
                 {images.map((img, index) => (
                     <img 
                     key={index}

@@ -25,6 +25,7 @@ function Scrolling() {
       {produit.map((a) => (
     <section className="Slide" key={a.idProduit}>
         <AnnonceSwip
+          nameHigh={a.NomProduit}
           images={a.photos?.map((p) => p.Images) || []}
           desc={a.Description}
           profil_picture={a.vendeur?.Photo_de_profil}

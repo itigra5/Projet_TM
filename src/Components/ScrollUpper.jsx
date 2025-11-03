@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./scrolling.css";
 
-function ScrollUpper({ children, onAddToCart }) {
+function ScrollUpper({ children, onAddToCart, nameHigh }) {
   const [showQty, setShowQty] = useState(false);
   const [qty, setQty] = useState(1);
   const [liked, setLiked] = useState(false);
@@ -21,7 +21,7 @@ function ScrollUpper({ children, onAddToCart }) {
 
   return (
     <div className="ScrollUpper">
-      <p className="ScrollTitle">Set de Cupcakes</p>
+      <p className="ScrollTitle">{nameHigh}</p>
 
       <div className="scrollImgages">{children}</div>
 
