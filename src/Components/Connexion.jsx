@@ -36,7 +36,9 @@ export default function Connexion() {
   return (
   <div className="login_page fixed-page">
     <div className="auth_container">
-      <h1 className="login_logo">YUCREA</h1>
+      <h1 className="login_logo">
+      <img src="/images/logo.png" alt="Yucrea logo" className="login_logo_img" />
+      </h1>
 
       <form className="login_form" onSubmit={handleSubmit}>
         <input

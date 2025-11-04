@@ -9,7 +9,9 @@ export default function Welcome() {
     <div className="welcome_page fixed-page">
       <div className="welcome_box">
         <h1 className="welcome_title">
-          Bienvenu(e)<br />chez <span className="welcome_brand">YUCREA</span>
+          Bienvenu(e)<br />chez <span className="welcome_brand">
+         <img src="/images/logo.png" alt="Yucrea logo" className="welcome_logo" />
+        </span>
         </h1>
 
         <div className="welcome_buttons">

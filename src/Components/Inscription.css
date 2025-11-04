@@ -8,12 +8,12 @@
   font-family: "Averia Serif Libre", serif;
 }
 
-.signup_logo {
-  font-weight: 700;
-  font-size: 32px;
-  margin-bottom: 30px;
-  text-align: center;
+.signup_logo_img {
+  height: 80px;        
+  width: auto;
+  object-fit: contain;
 }
+
 
 .signup_form {
   display: flex;

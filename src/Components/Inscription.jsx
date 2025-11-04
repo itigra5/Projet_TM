@@ -54,7 +54,9 @@ export default function Inscription() {
   return (
   <div className="signup_page fixed-page">
     <div className="auth_container">
-      <h1 className="signup_logo">YUCREA</h1>
+      <h1 className="signup_logo">
+      <img src="/images/logo.png" alt="Yucrea logo" className="signup_logo_img" />
+      </h1>
 
       <form className="signup_form" onSubmit={handleSubmit}>
         <input name="prenom" placeholder="Prénom" value={form.prenom} onChange={handleChange} />

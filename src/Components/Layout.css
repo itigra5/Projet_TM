@@ -15,9 +15,11 @@
   z-index: 10;
 }
 
-.head{
-    margin: 10px;
-    font-size: 20px;
+.header_logo {
+  height: 20px;       
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 #NavBar {
@@ -52,7 +54,7 @@
   }
 
 .no-chrome{
-  /* pages /welcome, /connexion, /inscription : plein écran blanc */
+  /* pages welcome, connexion, inscription : plein écran blanc */
   padding: 0;
   min-height: 100dvh;
   background: #fff;
@@ -63,17 +65,17 @@
 .fixed-page {
   position: fixed;
   inset: 0;
-  background-color: #fff; /* fond blanc (ou celui que tu veux) */
+  background-color: #fff; 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px;
 }
 
-/* Optionnel : s’assurer que le body ne scroll pas non plus */
 
 
-/* Cadre centré + largeur/hauteur maîtrisées */
+
+
 .auth_container{
   display: flex;
   flex-direction: column;
@@ -84,7 +86,7 @@
   padding: 0;
 }
 
-/* Titre/logo */
+
 .auth_logo{
   text-align: center;
   font-family: "Averia Serif Libre", serif;
@@ -94,7 +96,7 @@
 }
 
 
-/* Formulaire harmonisé */
+
 .auth_form{
   display: flex;
   flex-direction: column;
@@ -107,8 +109,8 @@
   padding: 12px 14px;
   border: 1.2px solid rgba(0,0,0,.45);
   border-radius: 10px;
-  font-size: 16px;         /* évite le zoom iOS */
-  background: #fff;
+  font-size: 16px;         
+  background: #ffffff;
 }
 
 .auth_btn{
@@ -125,7 +127,7 @@
 /* Bouton cœur */
 .favorite-link {
   position: absolute;
-  top: 13px;
+  top: 11px;
   right: 15px;
   background: none;
   border: none;

@@ -6,8 +6,9 @@ function Header() {
 
   return (
     <div id="header">
-      <span className="head" id="LogoSite"></span>
-      <span className="head" id="PageName">Yucrea</span>
+      <span className="head" id="LogoSite">
+      <img src="/images/logo.png" alt="Ucrea logo" className="header_logo" /></span> 
+      <span className="head" id="PageName"></span>
 
       {/* Ajout du bouton cœur */}
       <button

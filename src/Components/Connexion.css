@@ -8,11 +8,10 @@
   font-family: "Averia Serif Libre", serif;
 }
 
-.login_logo {
-  font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 40px;
-  text-align: center;
+.login_logo_img {
+  height: 80px;        
+  width: auto;
+  object-fit: contain;
 }
 
 .login_form {
