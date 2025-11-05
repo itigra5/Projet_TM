@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     idUser_panier: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'user',
         key: 'idUser'
@@ -12,10 +13,16 @@ module.exports = function(sequelize, DataTypes) {
     idProduit_panier: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'produit',
         key: 'idProduit'
       }
+    },
+    Quantity: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      defaultValue: 1
     },
     Timer: {
       type: DataTypes.TIME,
