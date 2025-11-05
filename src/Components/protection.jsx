@@ -7,7 +7,6 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (!token) {
       navigate("/welcome"); // redirection si pas de token
     }

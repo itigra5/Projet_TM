@@ -1,10 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./scrolling.css";
+import { jwtDecode } from "jwt-decode";
 
-function ScrollUpper({ children, onAddToCart, nameHigh }) {
+
+function ScrollUpper({ children, nameHigh, produitID}) {
   const [showQty, setShowQty] = useState(false);
   const [qty, setQty] = useState(1);
   const [liked, setLiked] = useState(false);
+  const [iduser, setIduser] = useState(null);
+
+useEffect (() => {
+const token = localStorage.getItem("token");
+
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      console.log("Décodé :", decoded);
+      setIduser(decoded.id_user);
+    } catch (err) {
+      console.error("Token invalide :", err);
+    }
+  }
+}, []);
+
 
   const openQty = () => {
     setQty(1);
@@ -12,11 +30,25 @@ function ScrollUpper({ children, onAddToCart, nameHigh }) {
   };
   const closeQty = () => setShowQty(false);
 
-  const confirmAdd = () => {
-    // si tu veux remonter au parent :
-    if (onAddToCart) onAddToCart(qty);
+  async function confirmAdd (){
+try{
+
+
+  const data = {userId:iduser, produitId:produitID, qty: qty}
+  console.log("Datas : ", data)
+     const res = await fetch("http://localhost:3000/panier/add", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+              throw new Error("Erreur lors de l'ajout de l'article");
+          }
     console.log("Ajouté au panier :", qty);
     setShowQty(false);
+        }catch(err){
+  console.error('Erreur :', err);
+}
   };
 
   return (

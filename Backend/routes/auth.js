@@ -37,9 +37,8 @@ router.post("/login", async (req, res) => {
     if (!valid) return res.status(400).json({ error: "Mot de passe invalide" });
 
     const token = jwt.sign(
-      { id: user.id, email: user.Email },
+      { email: user.Email, id_user: user.idUser},
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
     );
 
     res.json({ token });
