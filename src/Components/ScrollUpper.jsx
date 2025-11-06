@@ -70,7 +70,7 @@ try{
         <i className="fa-solid fa-heart" />
       </button>
 
-      {/* ------ POPUP QUANTITÉ ------ */}
+      {/* ------ Bouton QUANTITÉ ------ */}
       {showQty && (
         <div className="qty_modal_backdrop" onClick={closeQty}>
           <div

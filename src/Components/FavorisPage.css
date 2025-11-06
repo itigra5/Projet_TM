@@ -1,6 +1,6 @@
 .fav-page {
   padding: 0.75rem 1rem 6rem;
-  background: #fde7d4;     /* même fond que le reste de l’app */
+  background: #fde7d4;     
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -27,7 +27,7 @@
 
 .fav-row {
   display: grid;
-  grid-template-columns: 130px 1fr; /* disposition verticale */
+  grid-template-columns: 130px 1fr; 
   gap: 2.2rem;
   align-items: start;
   background: transparent; 
@@ -183,14 +183,14 @@
   .fav-img { height: 90px; }
 }
 
-/* Conteneur de l'image (pour positionner le cœur) */
+
 .fav-image-wrapper {
   position: relative;
   width: 140px;
   height: 200px;
 }
 
-/* Image portrait */
+
 .fav-img-portrait {
   width: 100%;
   height: 100%;
@@ -199,7 +199,7 @@
   border: 1px solid #a4a2a2;
 }
 
-/* Petit cœur */
+
 .fav-heart {
   position: absolute;
   bottom: 8px;
@@ -210,7 +210,7 @@
   cursor: pointer;
 }
 
-/* Animation quand on clique (petit effet discret) */
+/* Animation quand on clique sur le coeur */
 .fav-heart:active {
   transform: scale(0.9);
   transition: transform 0.1s;

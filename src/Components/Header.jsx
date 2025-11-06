@@ -10,7 +10,7 @@ function Header() {
       <img src="/images/logo.png" alt="Ucrea logo" className="header_logo" /></span> 
       <span className="head" id="PageName"></span>
 
-      {/* Ajout du bouton cœur */}
+      
       <button
         className="favorite-link"
         aria-label="Aller à mes favoris"

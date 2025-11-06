@@ -57,7 +57,7 @@
   font-size: 1rem;
 }
 
-/* ligne actions (quantité + corbeille) */
+
 .cart-actions {
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
   margin-top: 6px;
 }
 
-/* pousse la corbeille complètement à droite */
+
 .cart-actions .spacer {
   flex: 0.7;
 }
@@ -110,7 +110,7 @@
   cursor: pointer;
 }
 
-/* total du produit */
+
 .CartTotal {
   margin-top: 24px;
   padding: 16px;
@@ -127,7 +127,7 @@
 
 
 
-/* ---- FOOTER FIXE ---- */
+
 .CartFooter {
   position: static;          
   background: #ffffff;       
@@ -138,7 +138,7 @@
   margin: 0;
 }
 
-/* Ligne TOTAL  CHF xx.xx */
+/* Ligne TOTAL   */
 .CartFooter__row {
   display: flex;
   align-items: baseline;
@@ -157,12 +157,12 @@
   font-weight: 700;
 }
 
-/* Gros bouton CONTINUER style “rectangle dans le rectangle” */
+/* Gros bouton CONTINUER */
 .CartFooter__cta {
   width: 100%;
   background: rgb(241, 188, 188);                 /* rectangle blanc dans le beige */
   color: #ffffff;
-  border: 2px solid rgb(218, 177, 177);           /* contour bien visible */
+  border: 2px solid rgb(218, 177, 177);           
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 1.05rem;

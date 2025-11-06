@@ -16,7 +16,7 @@
 }
 
 .header_logo {
-  height: 20px;       
+  height: 30px;       
   width: auto;
   object-fit: contain;
   display: block;
@@ -124,7 +124,7 @@
   cursor: pointer;
 }
 
-/* Bouton cœur */
+/* Bouton favoris */
 .favorite-link {
   position: absolute;
   top: 11px;

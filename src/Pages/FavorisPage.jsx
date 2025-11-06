@@ -57,7 +57,7 @@ export default function FavorisPage() {
         ))}
       </section>
 
-      {/* ------ POPUP QUANTITÉ (même que ScrollUpper) ------ */}
+      {/* ------ bouton QUANTITÉ ------ */}
       {showQty && (
         <div className="qty_modal_backdrop" onClick={closeQty}>
           <div className="qty_modal" onClick={(e) => e.stopPropagation()}>

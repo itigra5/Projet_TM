@@ -48,7 +48,7 @@ function CompCart({
         <span className="CompCartPrice">CHF {Number(price).toFixed(2)} .-</span>
         <span className="CompCartTotal">Total : CHF {(price * quantity).toFixed(2)}</span>
         
-        {/* --- ligne des actions --- */}
+        {/*ligne des actions*/}
         <div className="cart-actions">
           {/* boutons de quantité */}
           <div className="qty-inline">

@@ -39,7 +39,7 @@ export default function Cart() {
     };
 
 
-  // --- 🧮 total général ---
+  // --- total général ---
   const totalPanier = useMemo(() => {
     return
   }, []);
