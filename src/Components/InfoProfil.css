@@ -57,10 +57,10 @@
   display:flex; 
   flex-direction:column;
   gap:8px;
-  align-items:center;        /* centre le texte + bouton */
-  justify-self:center;       /* centre dans la 3e colonne */
+  align-items:center;        
+  justify-self:center;
   align-self:center;
-  margin-left: -2px;         /* centre verticalement par rapport à la photo/nom */
+  margin-left: -2px;         
   transform: translateY(-3px);
 }
 
@@ -113,17 +113,17 @@
 }
 
 .creations_grid{
-  max-width: 680px;           /* aligne avec le profil */
+  max-width: 680px;           
   margin: 16px auto 24px;
   padding: 0 16px;
   box-sizing: border-box;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px 16px;             /* espace lignes/colonnes */
+  gap: 24px 16px;             
 }
 
-/* Carte simple : image arrondie + titre */
+
 .creation_card{
   background: none;           
   border-radius: 10px;
@@ -133,7 +133,7 @@
   padding: 0;
 }           
 
-/* Vignette (placeholder ou image) */
+
 .creation_thumb {
   width: 160px;
   height: 210px;
@@ -144,7 +144,7 @@
 }
 
 
-/* Titre de la création */
+
 .creation_title{
   margin: 8px 2px 2px;
   font-size: 0.95rem;

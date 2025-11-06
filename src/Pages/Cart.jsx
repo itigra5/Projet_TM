@@ -40,7 +40,7 @@ export default function Cart() {
     },
   ]);
 
-  // --- gestion quantité / suppression ---
+  // ---  quantité / suppression ---
   const handleIncreaseQty = (id, newQty) =>
     setItems((prev) =>
       prev.map((it) => (it.id === id ? { ...it, quantity: newQty } : it))
@@ -54,7 +54,7 @@ export default function Cart() {
   const handleDeleteItem = (id) =>
     setItems((prev) => prev.filter((it) => it.id !== id));
 
-  // --- 🧮 total général ---
+  // --- total général ---
   const totalPanier = useMemo(() => {
     return items.reduce((sum, it) => sum + it.price * it.quantity, 0);
   }, [items]);

@@ -8,8 +8,8 @@ export default function FavItem({
   const [favorite, setFavorite] = useState(isFavorite);
 
   const handleToggle = () => {
-    setFavorite(false);          // passe au cœur vide
-    onToggleFavorite?.();        // parent supprime l’item
+    setFavorite(false);          
+    onToggleFavorite?.();        
   };
 
   return (
@@ -17,7 +17,7 @@ export default function FavItem({
       <div className="fav-image-wrapper">
         <img src={img} alt={title} className="fav-img-portrait" />
 
-        {/* Petit cœur en bas à droite */}
+        
         <button className="fav-heart" onClick={handleToggle} aria-label="Retirer des favoris">
           {favorite ? (
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

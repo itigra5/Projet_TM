@@ -17,7 +17,7 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
 
   async function checkFollow() {
    
-    // Si c'est notre compt
+    // Si c'est notre compte
       if (parseInt(100) === parseInt(id)) {
         setIsFollowing(null);
         return;
@@ -66,7 +66,7 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
   });
 };
 
-  // Ce qui se passe quand on cliques
+  // Ce qui se passe quand on clique
     const handleClickFollow = async () => {
     handleFollow();        // change l’état local du bouton
     await FollowUser();    // envoie la requête POST au backend
@@ -77,14 +77,14 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
       <div className="profile_header">
         <img className="profil_picture" src={pp} alt={`Photo de ${name}`} />
 
-        {/* Colonne milieu : nom + ville + étoiles */}
+        
         <div className="identity">
           <h2 className="pseudo">{name}</h2>
           <p className="city">{city}</p>
           <p className="stars">{stars}</p>
         </div>
 
-        {/* Colonne droite : followers + bouton */}
+       
         <div className="follow_inline">
           <span className="followers_count">{followersCount} followers</span>
           {isFollowing !== null && (

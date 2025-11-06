@@ -18,11 +18,11 @@ function ScrollLower({ desc, profil_picture, name, city, stars }) {
           </div>
         </div>
 
-        {/* Bloc droit = étoiles */}
+        
           <Stars count={stars} />
       </div>
 
-      {/* Description du produit */}
+      
       <p className="scrollDesc">{desc}</p>
 
     </div>
