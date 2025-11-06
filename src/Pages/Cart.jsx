@@ -62,7 +62,7 @@ useEffect(() => {
     if (!iduser) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`http://localhost:3000/panier/${iduser}`);
+            const res = await fetch(`/panier/${iduser}`);
             const data = await res.json();
             console.log(data)
             setPanier(data);
