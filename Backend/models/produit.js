@@ -76,9 +76,14 @@ module.exports = function(sequelize, DataTypes) {
       as: 'photos'                   
     });
 
-    Produit.belongsTo(models.User, { as: 'vendeur', foreignKey: 'idUser_produit' });
+  Produit.associate = (models) => {
+    Produit.hasMany(models.Panier, { foreignKey: "idProduit_panier" });
   };
 
+
+    Produit.belongsTo(models.User, { as: 'vendeur', foreignKey: 'idUser_produit' });
+  };
+  
 
   return Produit;
 };

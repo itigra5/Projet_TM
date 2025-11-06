@@ -1,90 +1,110 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 import CompCart from "../Components/CompCart.jsx";
-import myData from "../Data.json";
 import "../Components/CompCart.css";
 
 export default function Cart() {
-  const vendor = myData.user[1];
+  const [items, setItems] = useState([]);
+  const [iduser, setIduser] = useState(null);
+  const [panier, setPanier] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // --- état du panier ---
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      link: "/produit/1",
-      img: "https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp",
-      name: "Muffins très bons",
-      user: vendor.name,
-      pp: vendor.profil_picture,
-      quantity: 3,
-      price: 2.5,
-    },
-    {
-      id: 2,
-      link: "/produit/2",
-      img: "https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp",
-      name: "Muffins délicieux",
-      user: vendor.name,
-      pp: vendor.profil_picture,
-      quantity: 2,
-      price: 3.0,
-    },
-    {
-      id: 3,
-      link: "/produit/2",
-      img: "https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp",
-      name: "Muffins délicieux",
-      user: vendor.name,
-      pp: vendor.profil_picture,
-      quantity: 4,
-      price: 3.0,
-    },
-  ]);
+
+
+
 
   // --- gestion quantité / suppression ---
-  const handleIncreaseQty = (id, newQty) =>
-    setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, quantity: newQty } : it))
-    );
+  async function handleIncreaseQty() {
+    try{
 
-  const handleDecreaseQty = (id, newQty) =>
-    setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, quantity: Math.max(1, newQty) } : it))
-    );
+    }catch(err){
+      console.error('Erreur :', err)
+    }
+  };
 
-  const handleDeleteItem = (id) =>
-    setItems((prev) => prev.filter((it) => it.id !== id));
+  async function handleDecreaseQty() {
+    try{
+
+    }catch(err){
+      console.error('Erreur :', err)
+    }
+    };
+
+  async function handleDeleteItem() {
+    try{
+
+    }catch(err){
+      console.error('Erreur :', err)
+    }
+    };
+
 
   // --- 🧮 total général ---
   const totalPanier = useMemo(() => {
-    return items.reduce((sum, it) => sum + it.price * it.quantity, 0);
-  }, [items]);
+    return
+  }, []);
+
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      const userId = decoded.id_user;
+      setIduser(userId);
+    } catch (err) {
+      console.error("Token invalide :", err);
+    }
+  }
+}, []);
+
+    useEffect(() => {
+    if (!iduser) return;
+      async function loadPanier() {
+        try {
+            const res = await fetch(`http://localhost:3000/panier/${iduser}`);
+            const data = await res.json();
+            console.log(data)
+            setPanier(data);
+          } catch (err) {
+            console.error('Erreur :', err);
+          }finally {
+            setLoading(false);
+        }   
+        }
+        loadPanier();
+      }, [iduser]);
+
+if (loading) return <p>Chargement du panier...</p>;
 
   return (
     <>
       <h1 className="Title">Mon panier</h1>
 
-      {items.map((it) => (
+      {panier.map(it => (
+         it.produit && it.produit.vendeur ? (
         <CompCart
-          key={it.id}
-          id={it.id}
-          link={it.link}
-          img={it.img}
-          name={it.name}
-          user={it.user}
-          pp={it.pp}
+          key={`${it.idUser_panier}-${it.idProduit_panier}`} // <--- clé unique
+          id={it.idUser_panier}
+          // link={it.link}
+          img={it.produit.photos && it.produit.photos.length > 0 ? it.produit.photos[0].Images : "placeholder.jpg"}
+          name={it.produit.NomProduit}
+          user={it.produit.vendeur.Nom}
+          pp="https://res.cloudinary.com/dd9c0kmvh/image/upload/v1762464935/download_qdaxsv.png"
           quantity={it.quantity}
-          price={it.price}
+          price={it.produit.Prix}
           onIncrease={handleIncreaseQty}
           onDecrease={handleDecreaseQty}
           onDelete={handleDeleteItem}
         />
+        ) : null
       ))}
 
       {/* --- FOOTER FIXE --- */}
       <div className="CartFooter">
         <div className="CartFooter__row">
           <span className="CartFooter__label">TOTAL</span>
-          <span className="CartFooter__amount">CHF {totalPanier.toFixed(2)}</span>
+          {/* <span className="CartFooter__amount">CHF {totalPanier.toFixed(2)}</span> */}
         </div>
 
         <button

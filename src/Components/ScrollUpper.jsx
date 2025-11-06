@@ -15,7 +15,6 @@ const token = localStorage.getItem("token");
   if (token) {
     try {
       const decoded = jwtDecode(token);
-      console.log("Décodé :", decoded);
       setIduser(decoded.id_user);
     } catch (err) {
       console.error("Token invalide :", err);

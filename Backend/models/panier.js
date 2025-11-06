@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('panier', {
+  const Panier = sequelize.define('panier', {
     idUser_panier: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -49,4 +49,12 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+
+Panier.associate = (models) => {
+  Panier.belongsTo(models.Produit, { foreignKey: "idProduit_panier", as: "produit" });
+  Panier.belongsTo(models.User, { foreignKey: "idUser_panier", as: "vendeur" });
+};
+
+
+return Panier;
 };
