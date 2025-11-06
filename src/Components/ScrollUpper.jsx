@@ -11,7 +11,6 @@ function ScrollUpper({ children, nameHigh, produitID}) {
 
 useEffect (() => {
 const token = localStorage.getItem("token");
-
   if (token) {
     try {
       const decoded = jwtDecode(token);
@@ -36,7 +35,7 @@ try{
 
   const data = {userId:iduser, produitId:produitID, qty: qty}
   console.log("Datas : ", data)
-     const res = await fetch("/panier/add", {
+     const res = await fetch("http://localhost:3000/panier/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

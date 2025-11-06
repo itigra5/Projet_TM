@@ -8,7 +8,7 @@ function Search_1() {
   useEffect(() => {
     async function loadCategories() {
       try {
-        const res = await fetch("/categories");
+        const res = await fetch("http://localhost:3000/categories");
         const data = await res.json();
         setCategories(Array.isArray(data) ? data : []);
       } catch (err) {
