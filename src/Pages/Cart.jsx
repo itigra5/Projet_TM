@@ -27,7 +27,7 @@ useEffect(() => {
     if (!iduser) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`http://localhost:3000/panier/${iduser}`);
+            const res = await fetch(`/panier/${iduser}`);
             const data = await res.json();
             console.log(data)
             setPanier(data);
@@ -46,7 +46,7 @@ useEffect(() => {
   // --- gestion quantité / suppression ---
   async function handleIncreaseQty(produitId) {
     try{
-      const res = await fetch(`http://localhost:3000/panier/increase/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/increase/${iduser}/${produitId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
@@ -70,7 +70,7 @@ useEffect(() => {
   async function handleDecreaseQty(produitId, qty) {
     if (qty === 1){return}
     try{
-      const res = await fetch(`http://localhost:3000/panier/decrease/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/decrease/${iduser}/${produitId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
@@ -93,7 +93,7 @@ useEffect(() => {
 
   async function handleDeleteItem(produitId) {
     try{
-      const res = await fetch(`http://localhost:3000/panier/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/${iduser}/${produitId}`, {
       method: "DELETE",
     });
 
