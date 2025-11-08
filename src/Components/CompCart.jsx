@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import MiniProfil from "./MiniProfil";
 
 function CompCart({
-  id,
+  iduser,
+  idproduit,
   link,
   img,
   name,
   pp,
   user,
-  quantity = 1,
+  quantity,
   price,
   onIncrease,
   onDecrease,
@@ -18,17 +19,17 @@ function CompCart({
   // --- fonctions locales pour gérer les clics ---
   const inc = (e) => {
     e.preventDefault();
-    onIncrease?.(id, quantity + 1);
+    onIncrease?.(iduser, idproduit, quantity + 1);
   };
 
   const dec = (e) => {
     e.preventDefault();
-    onDecrease?.(id, Math.max(1, quantity - 1));
+    onDecrease?.(iduser, idproduit, Math.max(1, quantity - 1));
   };
 
   const del = (e) => {
     e.preventDefault();
-    onDelete?.(id);
+    onDelete?.(idproduit);
   };
 
   return (

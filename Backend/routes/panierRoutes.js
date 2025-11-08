@@ -33,7 +33,6 @@ router.post("/add", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
 try{
-  console.log("L'id est ; ", req.params.id)
   const panier = await models.Panier.findAll({
         where : { idUser_panier : req.params.id },
         include: [
@@ -59,5 +58,74 @@ try{
     res.status(500).json({ error: err.message });
   }
 });
+
+
+
+router.delete("/:userId/:produitId", async (req, res) => {
+  try {
+    const { userId, produitId } = req.params;
+
+    const deleted = await models.Panier.destroy({
+      where: {
+        idUser_panier: userId,
+        idProduit_panier: produitId
+      }
+    });
+
+    if (deleted === 0) {
+      return res.status(404).json({ error: "Élément non trouvé" });
+    }
+
+    res.json({ message: "Élément supprimé" });
+  } catch (err) {
+    console.error("Erreur DELETE panier :", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+router.patch("/increase/:userId/:produitId", async (req, res) => {
+  console.log("Avant, fait")
+  try {
+    const { userId, produitId } = req.params;
+    console.log("body pas body reçu")
+
+    const [increase] = await models.Panier.increment(
+      {Quantity : 1},
+      {
+        where: {
+        idUser_panier: userId,
+        idProduit_panier: produitId
+      }
+    });
+
+    res.json({ message: "Élément plus, bien" });
+  }catch (err) {
+    console.error("Erreur PATCH panier :", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.patch("/decrease/:userId/:produitId", async (req, res) => {
+  try {
+    const { userId, produitId } = req.params;
+    console.log("body pas body reçu")
+
+    const [increase] = await models.Panier.decrement(
+      {Quantity : 1},
+      {
+        where: {
+        idUser_panier: userId,
+        idProduit_panier: produitId
+      }
+    });
+
+    res.json({ message: "Élément moins, bien" });
+  }catch (err) {
+    console.error("Erreur PATCH panier :", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 module.exports = router;

@@ -34,7 +34,7 @@ try{
 
   const data = {userId:iduser, produitId:produitID, qty: qty}
   console.log("Datas : ", data)
-     const res = await fetch("/panier/add", {
+     const res = await fetch("http://localhost:3000/panier/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -43,7 +43,7 @@ try{
               throw new Error("Erreur lors de l'ajout de l'article");
           }
     console.log("Ajouté au panier :", qty);
-    setShowQty(false);
+    closeQty;
         }catch(err){
   console.error('Erreur :', err);
 }
