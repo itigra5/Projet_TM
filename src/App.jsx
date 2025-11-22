@@ -15,7 +15,7 @@ import Welcome from "./Components/welcome.jsx";
 import Inscription from "./Components/Inscription";
 import Connexion from "./Components/Connexion";
 import FavorisPage from "./Pages/FavorisPage.jsx";
-import Annonce from "./Components/AnnonceSwip.jsx";
+import Annonce from "./Components/Annonce.jsx";
 import Protection from "./Components/protection.jsx";
 
 function App(){
@@ -38,7 +38,7 @@ function App(){
                         <Route index element={<Home/>}/>
                         <Route path="Search_1" element={<Search_1/>} />
                     </Route>
-                    <Route path="/produit/:id" element={<Annonce />} />
+                    <Route path="/articles/:id" element={<Annonce />} />
                     <Route path="favoris" element={<FavorisPage/>} />
                     <Route path="Add" element={<Add/>}/>
                     <Route path="Profile/:id" element={<Profile/>}/>

@@ -10,7 +10,7 @@ function Home() {
     useEffect(() => {
         async function loadProduct() {
             try{
-                const res = await fetch("/articles");
+                const res = await fetch("http://localhost:3000/articles");
                 const data = await res.json();
                 setProduit(data);
             }catch(err){
@@ -32,7 +32,7 @@ function Home() {
                 {produit.map(a => (
                     <MiniLising
                     key={a.idProduit}
-                    link={`/produit/${a.idProduit}`}
+                    link={`/articles/${a.idProduit}`}
                     title={a.NomProduit}
                     image={a.photos && a.photos.length > 0 ? a.photos[0].Images : "placeholder.jpg"}
                     />

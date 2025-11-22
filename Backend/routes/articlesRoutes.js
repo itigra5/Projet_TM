@@ -26,6 +26,28 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/:id', async (req, res) => {
+    try{
+        const article = await models.Produit.findOne({
+            where: { idProduit: req.params.id },
+            include: [{
+                model: models.PhotoProduit,
+                as: 'photos'
+            },
+        {
+          model: models.User,  
+          as: 'vendeur',     
+          attributes: ['idUser', 'Nom', 'Adresse', 'Photo_de_profil', 'Nombre_etoile']
+        }
+    ]
+        });
+        res.json(article)
+    }catch (err){
+        res.status(500).json(err);
+    }
+});
+
+
 router.post('/post', async (req, res) => {
     try{
         const idUser = 2;

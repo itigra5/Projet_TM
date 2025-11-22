@@ -69,19 +69,24 @@ module.exports = function(sequelize, DataTypes) {
     ]
   });
 
-    Produit.associate = function(models) {
+ Produit.associate = function (models) {
+
     // un produit a plusieurs photos
     Produit.hasMany(models.PhotoProduit, {
-      foreignKey: 'idProduit_Photo', 
-      as: 'photos'                   
+      foreignKey: 'idProduit_Photo',
+      as: 'photos'
     });
 
-  Produit.associate = (models) => {
-    Produit.hasMany(models.Panier, { foreignKey: "idProduit_panier" });
-  };
+    // un produit peut être dans plusieurs paniers
+    Produit.hasMany(models.Panier, {
+      foreignKey: "idProduit_panier"
+    });
 
-
-    Produit.belongsTo(models.User, { as: 'vendeur', foreignKey: 'idUser_produit' });
+    // un produit appartient à un vendeur (User)
+    Produit.belongsTo(models.User, {
+      as: 'vendeur',
+      foreignKey: 'idUser_produit'
+    });
   };
   
 
