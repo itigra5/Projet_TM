@@ -26,17 +26,41 @@ router.get('/:id', async (req, res) => {
 
 router.post('/followers/add/:id', async (req, res) => {
     try{
-        await models.Follower.create({idAbonnement : req.params.id, idAbonné : 9})
+        await models.Follower.create({idAbonnement : req.params.id, idAbonné : req.body.userId})
         res.status(201).json({ message: "Abonnement ajouté !" });
     }catch(err){
+
+        if (err.name === 'SequelizeUniqueConstraintError') {
+            return res.status(400).json({ message: 'Déjà abonné' });
+        }
+
         res.status(500).json(err)
     }
 });
 
-router.get('/followers/check/:id', async (req, res) => {
+router.delete('/followers/remove/:id', async (req, res) => {
+    try {
+        const idAbonnement = req.params.id;
+        const idAbonné = req.body.userId;
+
+        const deleted = await models.Follower.destroy({where: { idAbonnement, idAbonné }});
+
+        if (deleted === 0) {
+            return res.status(404).json({ message: "Relation non trouvée" });
+        }
+
+        res.json({ message: "Désabonné avec succès" });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/followers/check/:id/:userId', async (req, res) => {
     try{
-        const idAbonné = req.query.userId;
-        const idAbonnement = 100;
+        const idAbonné = req.params.userId;
+        const idAbonnement = req.params.id;
 
         const follow = await models.Follower.findOne({
             where: {idAbonnement, idAbonné}

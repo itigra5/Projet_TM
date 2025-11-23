@@ -1,8 +1,14 @@
+import { useState, useEffect } from "react";
 import './Layout.css'
 import { NavLink } from 'react-router-dom';
+import { useAuth } from "./AuthContext";
 
 
 function NavBar(){
+
+    const { userId } = useAuth();
+
+
 
     return(
         // j'utilise NavNavLink car il fonction avec la propriété active (pour le petit trait) --> A voir pk
@@ -28,7 +34,7 @@ function NavBar(){
             </NavLink>
 
             <NavLink 
-                to="/Profile/2" 
+                to={userId ? `/Profile/${userId}` : "#"} 
                 className="itemNavbar" 
                 title="Profile">
                 <i class="fa-solid fa-user"></i>

@@ -13,7 +13,7 @@ router.post("/signin", async (req, res) => {
     const newUser = await models.User.create({
       Nom: nom,
       Prénom: prenom,
-      Adress: ville,
+      Adresse: ville,
       Mot_de_passe: hashed,
       Email: email,
     });

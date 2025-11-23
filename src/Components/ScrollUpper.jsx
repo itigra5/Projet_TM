@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import "./scrolling.css";
-import { jwtDecode } from "jwt-decode";
+import { useAuth } from "./AuthContext";
+
 
 
 function ScrollUpper({ children, nameHigh, produitID}) {
@@ -9,17 +10,7 @@ function ScrollUpper({ children, nameHigh, produitID}) {
   const [liked, setLiked] = useState(false);
   const [iduser, setIduser] = useState(null);
 
-useEffect (() => {
-const token = localStorage.getItem("token");
-  if (token) {
-    try {
-      const decoded = jwtDecode(token);
-      setIduser(decoded.id_user);
-    } catch (err) {
-      console.error("Token invalide :", err);
-    }
-  }
-}, []);
+  const { userId } = useAuth();
 
 
   const openQty = () => {
@@ -32,7 +23,7 @@ const token = localStorage.getItem("token");
 try{
 
 
-  const data = {userId:iduser, produitId:produitID, qty: qty}
+  const data = {userId:userId, produitId:produitID, qty: qty}
   console.log("Datas : ", data)
      const res = await fetch("/panier/add", {
             method: 'POST',

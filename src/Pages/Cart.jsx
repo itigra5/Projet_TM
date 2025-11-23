@@ -2,32 +2,22 @@ import React, { useState, useMemo, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import CompCart from "../Components/CompCart.jsx";
 import "../Components/CompCart.css";
+import { useAuth } from "../Components/AuthContext";
+
+
 
 export default function Cart() {
-  const [items, setItems] = useState([]);
-  const [iduser, setIduser] = useState(null);
   const [panier, setPanier] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { userId } = useAuth();
 
-useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    try {
-      const decoded = jwtDecode(token);
-      const userId = decoded.id_user;
-      setIduser(userId);
-    } catch (err) {
-      console.error("Token invalide :", err);
-    }
-  }
-}, []);
 
     useEffect(() => {
-    if (!iduser) return;
+    if (!userId) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`/panier/${iduser}`);
+            const res = await fetch(`/panier/${userId}`);
             const data = await res.json();
             console.log(data)
             setPanier(data);
@@ -38,7 +28,7 @@ useEffect(() => {
         }   
         }
         loadPanier();
-      }, [iduser]);
+      }, [userId]);
 
 
 
@@ -46,7 +36,7 @@ useEffect(() => {
   // --- gestion quantité / suppression ---
   async function handleIncreaseQty(produitId) {
     try{
-      const res = await fetch(`/panier/increase/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/increase/${userId}/${produitId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
@@ -56,7 +46,7 @@ useEffect(() => {
     // Mets à jour en local
     setPanier(prev =>
       prev.map(it =>
-      it.idUser_panier === iduser && it.idProduit_panier === produitId
+      it.idUser_panier === userId && it.idProduit_panier === produitId
       ? { ...it, Quantity: it.Quantity + 1 } // incrémente localement
       : it
   )
@@ -70,7 +60,7 @@ useEffect(() => {
   async function handleDecreaseQty(produitId, qty) {
     if (qty === 1){return}
     try{
-      const res = await fetch(`/panier/decrease/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/decrease/${userId}/${produitId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
@@ -80,7 +70,7 @@ useEffect(() => {
     // Mets à jour en local
     setPanier(prev =>
       prev.map(it =>
-      it.idUser_panier === iduser && it.idProduit_panier === produitId
+      it.idUser_panier === userId && it.idProduit_panier === produitId
       ? { ...it, Quantity: it.Quantity - 1 } // decrémente localement
       : it
   )
@@ -93,7 +83,7 @@ useEffect(() => {
 
   async function handleDeleteItem(produitId) {
     try{
-      const res = await fetch(`/panier/${iduser}/${produitId}`, {
+      const res = await fetch(`/panier/${userId}/${produitId}`, {
       method: "DELETE",
     });
 
@@ -101,7 +91,7 @@ useEffect(() => {
 
     // Mets à jour l'état local
     setPanier(panier.filter(it => 
-      !(it.idUser_panier === iduser && it.idProduit_panier === produitId)
+      !(it.idUser_panier === userId && it.idProduit_panier === produitId)
     ));
 
     }catch(err){

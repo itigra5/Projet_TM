@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./InfoProfil.css";
 import { useParams } from "react-router-dom";
-
+import { useAuth } from "./AuthContext";
 
 
 
@@ -10,6 +10,7 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
   const [followersCount, setFollowersCount] = useState(followers ?? 0);
 
   const { id } = useParams();
+  const { userId } = useAuth();
 
 
   useEffect(() => {
@@ -18,15 +19,13 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
   async function checkFollow() {
    
     // Si c'est notre compte
-      if (parseInt(100) === parseInt(id)) {
+      if (parseInt(userId) === parseInt(id)) {
         setIsFollowing(null);
         return;
       };
       
       try {
-        const res = await fetch(
-          `/user/followers/check/${id}`
-        );
+        const res = await fetch(`/user/followers/check/${id}/${userId}`);
         const data = await res.json();
         console.log("il est follow ? en fr : ", data.isFollowing, "et br :", isFollowing)
         setIsFollowing(data.isFollowing);
@@ -45,15 +44,36 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
-      }});
-
+      }, 
+     body: JSON.stringify({
+    userId: userId
+  }),
+});
     const data = await res.json();
     console.log("Réponse du serveur :", data);
 
         }catch(err){
           console.error('Erreur :', err);         
         }
-      }
+      };
+
+  async function UnfollowUser() {
+  try {
+    const res = await fetch(`/user/followers/remove/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ userId })
+    });
+
+    const data = await res.json();
+    console.log("Unfollow :", data);
+
+  } catch (err) {
+    console.error("Erreur :", err);
+  }
+}
 
   
 
@@ -68,8 +88,14 @@ function InfoProfil({ name, city, pp, stars, followers, description }) {
 
   // Ce qui se passe quand on clique
     const handleClickFollow = async () => {
-    handleFollow();        // change l’état local du bouton
-    await FollowUser();    // envoie la requête POST au backend
+      if (isFollowing){
+    handleFollow(); 
+    await UnfollowUser(); 
+      }
+      else{
+        handleFollow();
+        await FollowUser();
+      }
   };
 
   return (

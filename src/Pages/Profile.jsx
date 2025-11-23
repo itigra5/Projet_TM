@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import InfoProfil from "../Components/InfoProfil";
-import myData from "../Data.json";
 import "../Components/InfoProfil.css";
 import { useParams } from "react-router-dom";
+
 
 
 function Profile() {
@@ -10,8 +10,7 @@ function Profile() {
   const { id } = useParams();
   const [nbrFollowers, setNbrFollowers] = useState(0);
 
-  const a = 4; 
-  const u = myData.user[a];
+
   const casevide = [1, 2, 3, 4, 5, 6];
 
     useEffect(() => {
@@ -62,10 +61,10 @@ function Profile() {
   return (
     <>
       <InfoProfil
-        name={profile.Nom}
-        city={profile.Adresse}
-        pp={profile.photodeprofile}     
-        description={profile.Description}
+        name={profile?.Nom}
+        city={profile?.Adresse}
+        pp={profile?.photodeprofile}     
+        description={profile?.Description}
         followers={nbrFollowers}
         // stars={u.stars}  plus tard aussi
       />
