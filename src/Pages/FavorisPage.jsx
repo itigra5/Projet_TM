@@ -43,7 +43,7 @@ export default function FavorisPage() {
     if (!userId) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`http://localhost:3000/favoris/${userId}`);
+            const res = await fetch(`/favoris/${userId}`);
             const data = await res.json();
             console.log(data)
             setFavorites(data);
@@ -63,7 +63,7 @@ try{
 
   const data = {userId:userId, produitId:2, qty: qty}
   console.log("Datas : ", data)
-     const res = await fetch("http://localhost:3000/favoris/add", {
+     const res = await fetch("/favoris/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

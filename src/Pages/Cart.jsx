@@ -16,7 +16,7 @@ export default function Cart() {
     if (!userId) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`http://localhost:3000/panier/${userId}`);
+            const res = await fetch(`/panier/${userId}`);
             const data = await res.json();
             console.log(data)
             setPanier(data);
