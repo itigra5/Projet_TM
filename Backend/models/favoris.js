@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('favoris', {
+  const Favoris = sequelize.define('favoris', {
     idUser_favoris: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'user',
         key: 'idUser'
@@ -12,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     idProduit_favoris: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'produit',
         key: 'idProduit'
@@ -40,4 +42,19 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+
+    Favoris.associate = (models) => {
+    Favoris.belongsTo(models.User, {
+        foreignKey: "idUser_favoris",
+        as: "user"
+            });
+
+    Favoris.belongsTo(models.Produit, {
+        foreignKey: "idProduit_favoris",
+        as: "produit"
+    });
+  };
+
+  return Favoris;
+
 };

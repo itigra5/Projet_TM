@@ -8,8 +8,7 @@ function ScrollUpper({ children, nameHigh, produitID}) {
   const [showQty, setShowQty] = useState(false);
   const [qty, setQty] = useState(1);
   const [liked, setLiked] = useState(false);
-  const [iduser, setIduser] = useState(null);
-
+  
   const { userId } = useAuth();
 
 

@@ -82,6 +82,12 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: "idProduit_panier"
     });
 
+    // un produit peut être dans plusieurs favorits
+    Produit.hasMany(models.Favoris, {
+      foreignKey: "idProduit_favoris",
+      as: "favoris"
+    });
+
     // un produit appartient à un vendeur (User)
     Produit.belongsTo(models.User, {
       as: 'vendeur',

@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
 import CompCart from "../Components/CompCart.jsx";
 import "../Components/CompCart.css";
 import { useAuth } from "../Components/AuthContext";
@@ -17,7 +16,7 @@ export default function Cart() {
     if (!userId) return;
       async function loadPanier() {
         try {
-            const res = await fetch(`/panier/${userId}`);
+            const res = await fetch(`http://localhost:3000/panier/${userId}`);
             const data = await res.json();
             console.log(data)
             setPanier(data);

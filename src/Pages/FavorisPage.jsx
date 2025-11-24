@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FavItem from "../Components/FavItem.jsx";          // <-- bon import
 import myData from "../Data.json";
 import "../Components/FavorisPage.css";
+import { useAuth } from "../Components/AuthContext";
+
 
 export default function FavorisPage() {
   const [favorites, setFavorites] = useState(
@@ -15,6 +17,9 @@ export default function FavorisPage() {
       },
     ]
   );
+  const [loading, setLoading] = useState(true);
+
+  const { userId } = useAuth();
 
   // --- état modale quantité ---
   const [showQty, setShowQty] = useState(false);
@@ -26,12 +31,51 @@ export default function FavorisPage() {
     setQty(1);
     setShowQty(true);
   };
+
+
+  // fonctions___
+
   const closeQty = () => setShowQty(false);
 
-  const confirmAdd = () => {
-    if (!currentItem) return;
-    console.log("ADD TO CART:", { id: currentItem.id, qty, price: currentItem.price });
-    setShowQty(false);
+
+
+    useEffect(() => {
+    if (!userId) return;
+      async function loadPanier() {
+        try {
+            const res = await fetch(`http://localhost:3000/favoris/${userId}`);
+            const data = await res.json();
+            console.log(data)
+            setFavorites(data);
+          } catch (err) {
+            console.error('Erreur :', err);
+          }finally {
+            setLoading(false);
+        }   
+        }
+        loadPanier();
+      }, [userId]);
+
+
+async function confirmAdd (){
+try{
+
+
+  const data = {userId:userId, produitId:2, qty: qty}
+  console.log("Datas : ", data)
+     const res = await fetch("http://localhost:3000/favoris/add", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+              throw new Error("Erreur lors de l'ajout de l'article");
+          }
+    console.log("Ajouté au panier :", qty);
+    closeQty;
+        }catch(err){
+  console.error('Erreur :', err);
+}
   };
 
   const handleToggleFavorite = (id) => {
@@ -43,18 +87,19 @@ export default function FavorisPage() {
       <h1 className="Title">Mes favoris</h1>
 
       <section className="fav-list">
-        {favorites.map((p) => (
-          <FavItem
-            key={p.id}
-            img={p.img}
-            title={p.title}
-            sellerName={p.seller?.name}
-            sellerAvatar={p.seller?.avatar}
-            price={p.price}
-            onAdd={() => openQty(p)}                        
-            onToggleFavorite={() => handleToggleFavorite(p.id)}
-          />
-        ))}
+        {favorites.map((it) => (
+            <FavItem
+              key={`${it.idUser_favoris}-${it.idProduit_favoris}`}
+              img={it.produit?.photos?.[0]?.Images ?? "placeholder.jpg"}
+              title={it.produit?.NomProduit ?? "Produit supprimé"}
+              sellerName={it.produit?.vendeur?.Nom ?? "Vendeur inconnu"}
+              sellerAvatar="https://res.cloudinary.com/dd9c0kmvh/image/upload/v1762464935/download_qdaxsv.png"
+              quantity={Number(it.produit?.Quantité ?? 1)}
+              price={Number(it.produit?.Prix ?? 0)}
+              onAdd={() => openQty(it)}
+              onToggleFavorite={() => handleToggleFavorite(it.idProduit_favoris)}
+            />
+          ))}
       </section>
 
       {/* ------ bouton QUANTITÉ ------ */}

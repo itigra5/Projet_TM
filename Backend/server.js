@@ -5,6 +5,7 @@ const artRoutes =require('./routes/articlesRoutes');
 const userRoutes =require('./routes/userRoutes');
 const authRoutes = require('./routes/auth');
 const panierRoutes = require('./routes/panierRoutes');
+const favorisRoutes = require('./routes/favorisRoutes');
 const path = require('path');
 
 
@@ -19,10 +20,11 @@ app.use("/articles", artRoutes);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/panier", panierRoutes);
+app.use("/favoris", favorisRoutes);
 
 
 
-// Pour que Express s'occupe du front end
+// Pour que Express s'occupe du front end (de chat GPT)
 
 // Servir les fichiers statiques de React
 app.use(express.static(path.join(__dirname, '..', 'dist')));

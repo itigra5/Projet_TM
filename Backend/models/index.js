@@ -7,10 +7,11 @@ const Produit = require('./produit.js')(sequelize, require('sequelize').DataType
 const PhotoProduit = require('./photo_produit.js')(sequelize, require('sequelize').DataTypes)
 const Follower = require('./followers.js')(sequelize, require('sequelize').DataTypes)
 const Panier = require('./panier.js')(sequelize, require('sequelize').DataTypes)
+const Favoris = require('./favoris.js')(sequelize, require('sequelize').DataTypes)
 
 
 
-const models = { categories, User, SousCategorie, Produit, PhotoProduit, Follower, Panier};
+const models = { categories, User, SousCategorie, Produit, PhotoProduit, Follower, Panier, Favoris};
 
 Object.keys(models).forEach(modelName => {
     if (models[modelName].associate) {
