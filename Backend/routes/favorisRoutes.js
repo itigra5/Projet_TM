@@ -37,14 +37,42 @@ router.post("/add", async (req, res) => {
   const { userId, produitId } = req.body;
 
   try {
-    // Sinon, créer une nouvelle entrée
-    await models.Favoris.create({
-      idUser_favoris: userId,
-      idProduit_favoris: produitId,
+    await models.Favoris.findOrCreate({
+      where: {
+        idUser_favoris: userId,
+        idProduit_favoris: produitId,
+      }
     });
+
+    return res.json({ success: true });
+
 
   } catch (err) {
     console.error("Erreur exacte :", err); 
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+// // A METTRE DANS LE BODY PLUTOTKCCKCKCKCK
+router.delete("/del/:userId/:produitId", async (req, res) => {
+  try {
+    const { userId, produitId } = req.params;
+
+    const deleted = await models.Favoris.destroy({
+      where: {
+        idUser_favoris: userId,
+        idProduit_favoris: produitId
+      }
+    });
+
+    if (deleted === 0) {
+      return res.status(404).json({ error: "Élément non trouvé" });
+    }
+
+    res.json({ message: "Élément supprimé des favoris" });
+  } catch (err) {
+    console.error("Erreur DELETE favoris :", err);
     res.status(500).json({ error: err.message });
   }
 });

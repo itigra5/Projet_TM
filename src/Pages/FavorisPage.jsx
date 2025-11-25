@@ -6,17 +6,7 @@ import { useAuth } from "../Components/AuthContext";
 
 
 export default function FavorisPage() {
-  const [favorites, setFavorites] = useState(
-    myData.favorites ?? [
-      {
-        id: 1,
-        title: "Muffins très bons",
-        img: "https://www.francine.com/wp-content/uploads/2018/09/mini-muffins-aux-petits-suisses-691125016252-1.webp",
-        seller: { name: myData.user?.[1]?.name, avatar: myData.user?.[1]?.profil_picture },
-        price: 2.5,
-      },
-    ]
-  );
+  const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const { userId } = useAuth();
@@ -41,9 +31,9 @@ export default function FavorisPage() {
 
     useEffect(() => {
     if (!userId) return;
-      async function loadPanier() {
+      async function loadFav() {
         try {
-            const res = await fetch(`/favoris/${userId}`);
+            const res = await fetch(`http://localhost:3000/favoris/${userId}`);
             const data = await res.json();
             console.log(data)
             setFavorites(data);
@@ -53,17 +43,36 @@ export default function FavorisPage() {
             setLoading(false);
         }   
         }
-        loadPanier();
+        loadFav();
       }, [userId]);
 
 
-async function confirmAdd (){
+  async function handleDeleteItem(produitId) {
+    try{
+      const res = await fetch(`http://localhost:3000/favoris/del/${userId}/${produitId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Erreur lors de la suppression");
+
+    // Mets à jour l'état local
+    setFavorites(favorites.filter(it => 
+      !(it.idUser_panier === userId && it.idProduit_panier === produitId)
+    ));
+
+    }catch(err){
+      console.error('Erreur :', err)
+    }
+    };
+
+
+  async function confirmAdd (){
 try{
 
 
-  const data = {userId:userId, produitId:2, qty: qty}
+  const data = {userId:userId, produitId:produitID, qty: qty}
   console.log("Datas : ", data)
-     const res = await fetch("/favoris/add", {
+     const res = await fetch("http://localhost:3000/panier/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -72,15 +81,12 @@ try{
               throw new Error("Erreur lors de l'ajout de l'article");
           }
     console.log("Ajouté au panier :", qty);
-    closeQty;
+    closeQty();
         }catch(err){
   console.error('Erreur :', err);
 }
   };
 
-  const handleToggleFavorite = (id) => {
-    setFavorites((prev) => prev.filter((item) => item.id !== id));
-  };
 
   return (
     <>
@@ -97,7 +103,7 @@ try{
               quantity={Number(it.produit?.Quantité ?? 1)}
               price={Number(it.produit?.Prix ?? 0)}
               onAdd={() => openQty(it)}
-              onToggleFavorite={() => handleToggleFavorite(it.idProduit_favoris)}
+              onToggleFavorite={() => handleDeleteItem(it.idProduit_panier)}
             />
           ))}
       </section>

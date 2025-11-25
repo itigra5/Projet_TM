@@ -8,7 +8,7 @@ function ScrollUpper({ children, nameHigh, produitID}) {
   const [showQty, setShowQty] = useState(false);
   const [qty, setQty] = useState(1);
   const [liked, setLiked] = useState(false);
-  
+
   const { userId } = useAuth();
 
 
@@ -33,11 +33,31 @@ try{
               throw new Error("Erreur lors de l'ajout de l'article");
           }
     console.log("Ajouté au panier :", qty);
-    closeQty;
+    closeQty();
         }catch(err){
   console.error('Erreur :', err);
 }
   };
+
+  async function favorisAdd() {
+    try{
+
+
+  const data = {userId:userId, produitId:produitID}
+  console.log("Datas : ", data)
+     const res = await fetch("http://localhost:3000/favoris/add", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+              throw new Error("Erreur lors de l'ajout de l'article");
+          }
+    console.log("Ajouté au favoris :", qty);
+        }catch(err){
+  console.error('Erreur :', err);
+}
+  }
 
   return (
     <div className="ScrollUpper">
@@ -54,7 +74,7 @@ try{
       {/* cœur */}
       <button
         className={`like ${liked ? "liked" : ""}`}
-        onClick={() => setLiked((v) => !v)}
+        onClick={favorisAdd}
         aria-label="Ajouter aux favoris"
       >
         <i className="fa-solid fa-heart" />
