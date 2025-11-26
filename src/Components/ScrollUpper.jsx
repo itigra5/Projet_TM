@@ -39,13 +39,34 @@ try{
 }
   };
 
+    async function handleDeleteItem(produitId) {
+    try{
+      const res = await fetch(`/favoris/del/${userId}/${produitId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Erreur lors de la suppression");
+
+    // Mets à jour l'état local
+    setLiked(0)
+
+    }catch(err){
+      console.error('Erreur :', err)
+    }
+    };
+
+
   async function favorisAdd() {
     try{
+      if (!userId || !produitID) return;
 
+      if (liked){
+        handleDeleteItem(produitID)
+        return
+      }
 
   const data = {userId:userId, produitId:produitID}
-  console.log("Datas : ", data)
-     const res = await fetch("http://localhost:3000/favoris/add", {
+     const res = await fetch("/favoris/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -53,11 +74,31 @@ try{
           if (!res.ok) {
               throw new Error("Erreur lors de l'ajout de l'article");
           }
+    setLiked(1)
     console.log("Ajouté au favoris :", qty);
         }catch(err){
   console.error('Erreur :', err);
 }
   }
+
+  useEffect(() => {
+async function isFavoris() {
+            if (!userId || !produitID) return;
+
+            try{
+            const res = await fetch(`/favoris/check/${userId}/${produitID}`);
+            const data = await res.json();
+
+            if (data.exist === 1) {
+              setLiked(1)}
+          }catch(err){
+            console.error('Erreur :', err);
+          }
+        }
+      isFavoris()
+    }, [])
+        
+
 
   return (
     <div className="ScrollUpper">

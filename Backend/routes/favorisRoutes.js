@@ -31,7 +31,18 @@ try{
   }
 });
 
+router.get("/check/:userId/:produitId", async (req, res) => {
+    try{
+         const fav = await models.Favoris.findOne({
+        where : { idUser_favoris : req.params.userId, idProduit_favoris : req.params.produitId }  
+  });
+  res.json({ exist: fav ? 1 : 0 });
 
+    }catch(err){
+        console.error("Erreur exacte :", err); 
+        res.status(500).json({ error: err.message });
+    }
+});
 
 router.post("/add", async (req, res) => {
   const { userId, produitId } = req.body;

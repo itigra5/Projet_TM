@@ -8,7 +8,7 @@ function Annonce() {
 
     useEffect(() => {
         async function fetchProduit() {
-            const res = await fetch(`http://localhost:3000/articles/${id}`);
+            const res = await fetch(`/articles/${id}`);
             const data = await res.json();
             setProduit(data);
         }

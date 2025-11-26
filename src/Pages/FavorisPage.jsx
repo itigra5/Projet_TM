@@ -33,7 +33,7 @@ export default function FavorisPage() {
     if (!userId) return;
       async function loadFav() {
         try {
-            const res = await fetch(`http://localhost:3000/favoris/${userId}`);
+            const res = await fetch(`/favoris/${userId}`);
             const data = await res.json();
             console.log(data)
             setFavorites(data);
@@ -49,7 +49,7 @@ export default function FavorisPage() {
 
   async function handleDeleteItem(produitId) {
     try{
-      const res = await fetch(`http://localhost:3000/favoris/del/${userId}/${produitId}`, {
+      const res = await fetch(`/favoris/del/${userId}/${produitId}`, {
       method: "DELETE",
     });
 
@@ -57,7 +57,7 @@ export default function FavorisPage() {
 
     // Mets à jour l'état local
     setFavorites(favorites.filter(it => 
-      !(it.idUser_panier === userId && it.idProduit_panier === produitId)
+      !(it.idUser_favoris === userId && it.idProduit_favoris   === produitId)
     ));
 
     }catch(err){
@@ -68,11 +68,11 @@ export default function FavorisPage() {
 
   async function confirmAdd (){
 try{
+ if (!currentItem) return;
 
-
-  const data = {userId:userId, produitId:produitID, qty: qty}
+  const data = {userId:userId, produitId:currentItem.idProduit_favoris, qty: qty}
   console.log("Datas : ", data)
-     const res = await fetch("http://localhost:3000/panier/add", {
+     const res = await fetch("/panier/add", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -91,6 +91,13 @@ try{
   return (
     <>
       <h1 className="Title">Mes favoris</h1>
+      {loading && <p>Chargement…</p>}
+
+      {!loading && favorites.length === 0 && (
+        <p>Aucune favoris enrgistré.</p>
+      )}
+
+
 
       <section className="fav-list">
         {favorites.map((it) => (
@@ -103,7 +110,7 @@ try{
               quantity={Number(it.produit?.Quantité ?? 1)}
               price={Number(it.produit?.Prix ?? 0)}
               onAdd={() => openQty(it)}
-              onToggleFavorite={() => handleDeleteItem(it.idProduit_panier)}
+              onToggleFavorite={() => handleDeleteItem(it.idProduit_favoris)}
             />
           ))}
       </section>
