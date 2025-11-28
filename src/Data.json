@@ -14,22 +14,10 @@
         "image": "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/8c7c68c0-69d3-49d0-97df-1a0e2a24c45e/air-max-270-shoes.png"
         },
         {
-        "id": 3,
-        "title": "Canon EOS 90D Camera",
-        "user": "Lina",
-        "image": "https://cdn.mos.cms.futurecdn.net/DKqjKQfKqzu2r7Z36EGo7P-320-80.jpg"
-        },
-        {
         "id": 4,
         "title": "Fender Acoustic Guitar",
         "user": "Nour",
-        "image": "https://d1aeri3ty3izns.cloudfront.net/media/54/543778/600/preview.jpg"
-        },
-        {
-        "id": 5,
-        "title": "Monstera Plant",
-        "user": "Hassan",
-        "image": "https://www.gardendesign.com/pictures/images/900x705Max/site_3/monstera-deliciosa-houseplant-shutterstock-com_12883.jpg"
+        "image": "https://res.cloudinary.com/dd9c0kmvh/image/upload/v1764313929/download_rfa9gg.jpg"
         }
     ],
     

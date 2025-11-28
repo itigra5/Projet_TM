@@ -63,7 +63,7 @@ function Profile() {
       <InfoProfil
         name={profile?.Nom}
         city={profile?.Adresse}
-        pp={profile?.photodeprofile}     
+        pp={profile?.Photo_de_profil}     
         description={profile?.Description}
         followers={nbrFollowers}
         // stars={u.stars}  plus tard aussi
